@@ -1,27 +1,77 @@
 import { useState, useReducer } from "react";
 
-const CATEGORIES = ["Cables", "Tuberías", "Breakers", "Paneles", "Iluminación", "Conectores", "Herramientas", "Otros"];
+const CATEGORIES = [
+  "Protección Residencial",
+  "Protección Comercial",
+  "Protección Industrial",
+  "Protección HVAC",
+  "Protección Datos/Señal",
+  "Protección Video/CCTV",
+  "UPS / Acondicionadores",
+  "Redes y Accesorios",
+];
 const PROJECT_TYPES = ["Residencial", "Comercial"];
 const PROJECT_STATUS = ["En planificación", "En progreso", "Completado"];
 const ROLES = ["Administrador", "Supervisor", "Técnico"];
 
 const initialState = {
   materials: [
-    { id: 1, name: "Cable THHN #12 AWG", category: "Cables", unit: "metros", stock: 5000, minStock: 500, unitCost: 0.85 },
-    { id: 2, name: "Cable THHN #10 AWG", category: "Cables", unit: "metros", stock: 3200, minStock: 400, unitCost: 1.20 },
-    { id: 3, name: "Tubería EMT 3/4\"", category: "Tuberías", unit: "unidades", stock: 320, minStock: 50, unitCost: 4.50 },
-    { id: 4, name: "Tubería EMT 1\"", category: "Tuberías", unit: "unidades", stock: 180, minStock: 30, unitCost: 6.75 },
-    { id: 5, name: "Breaker 20A 1P", category: "Breakers", unit: "unidades", stock: 85, minStock: 20, unitCost: 12.00 },
-    { id: 6, name: "Breaker 30A 2P", category: "Breakers", unit: "unidades", stock: 42, minStock: 15, unitCost: 28.50 },
-    { id: 7, name: "Panel 12 espacios", category: "Paneles", unit: "unidades", stock: 15, minStock: 5, unitCost: 95.00 },
-    { id: 8, name: "Panel 24 espacios", category: "Paneles", unit: "unidades", stock: 8, minStock: 3, unitCost: 185.00 },
-    { id: 9, name: "Lámpara LED 18W", category: "Iluminación", unit: "unidades", stock: 200, minStock: 30, unitCost: 8.50 },
-    { id: 10, name: "Tomacorriente doble", category: "Conectores", unit: "unidades", stock: 350, minStock: 50, unitCost: 3.25 },
+    // ── Protección Residencial ──
+    { id: 1,  name: "DTK-120/240SA",    category: "Protección Residencial", unit: "unidades", stock: 40, minStock: 8,  unitCost: 45.00,  sku: "DTK-120/240SA",    description: "SPD residencial 120/240VAC, 100kA, para medidores y paneles pequeños" },
+    { id: 2,  name: "DTK-120/240HD2",   category: "Protección Residencial", unit: "unidades", stock: 28, minStock: 6,  unitCost: 68.00,  sku: "DTK-120/240HD2",   description: "SPD residencial/comercial ligero 100kA, split phase 120/240VAC" },
+    { id: 3,  name: "DTK-WHS",          category: "Protección Residencial", unit: "unidades", stock: 15, minStock: 4,  unitCost: 125.00, sku: "DTK-WHS",          description: "Whole House Surge Protector, protección completa para el hogar" },
+    { id: 4,  name: "DTK-1F",           category: "Protección Residencial", unit: "unidades", stock: 80, minStock: 15, unitCost: 18.50,  sku: "DTK-1F",           description: "Supresor de sobretensión de un tomacorriente, plug-in 120VAC" },
+    { id: 5,  name: "DTK-PLUG",         category: "Protección Residencial", unit: "unidades", stock: 60, minStock: 12, unitCost: 22.00,  sku: "DTK-PLUG",         description: "Supresor plug-in multipunto, protección para equipos domésticos" },
+
+    // ── Protección Comercial ──
+    { id: 6,  name: "DTK-120HW",        category: "Protección Comercial",   unit: "unidades", stock: 35, minStock: 8,  unitCost: 42.00,  sku: "DTK-120HW",        description: "SPD 120VAC compacto montaje paralelo, paneles y circuitos derivados, NEMA 4X" },
+    { id: 7,  name: "DTK-240HW",        category: "Protección Comercial",   unit: "unidades", stock: 22, minStock: 5,  unitCost: 48.00,  sku: "DTK-240HW",        description: "SPD monofásico 240VAC compacto, circuitos derivados dedicados, UL1449 Tipo 1" },
+    { id: 8,  name: "DTK-120/240HW",    category: "Protección Comercial",   unit: "unidades", stock: 30, minStock: 6,  unitCost: 55.00,  sku: "DTK-120/240HW",    description: "SPD split phase 120/240VAC montaje paralelo, paneles eléctricos, NEMA 4X" },
+    { id: 9,  name: "DTK-120HWLOK",     category: "Protección Comercial",   unit: "unidades", stock: 12, minStock: 3,  unitCost: 65.00,  sku: "DTK-120HWLOK",     description: "SPD 120VAC con kit de bloqueo NFPA 72 2022, previene desconexión accidental de alarma" },
+    { id: 10, name: "DTK-120/240CMX",   category: "Protección Comercial",   unit: "unidades", stock: 20, minStock: 5,  unitCost: 85.00,  sku: "DTK-120/240CMX",   description: "SPD split phase 120/240VAC multi-propósito, Tipo 1, para uso exterior" },
+    { id: 11, name: "DTK-120/240CM+",   category: "Protección Comercial",   unit: "unidades", stock: 18, minStock: 4,  unitCost: 68.73,  sku: "DTK-120/240CM+",   description: "SPD multi-propósito Tipo 1, 120/240VAC 2P, 10kA SCCR — HVAC, bombas, motores" },
+
+    // ── Protección Industrial ──
+    { id: 12, name: "D50-120/2401",     category: "Protección Industrial",  unit: "unidades", stock: 10, minStock: 3,  unitCost: 185.00, sku: "D50-120/2401",     description: "SPD industrial 50kA/fase, componentes fusibles individuales, 120/240VAC" },
+    { id: 13, name: "DTK-2403CMXPLUS",  category: "Protección Industrial",  unit: "unidades", stock: 8,  minStock: 2,  unitCost: 220.00, sku: "DTK-2403CMXPLUS",  description: "SPD trifásico 240VAC, Serie CMXPLUS, equipos industriales y paneles" },
+    { id: 14, name: "DTK-4803CMXPLUS",  category: "Protección Industrial",  unit: "unidades", stock: 6,  minStock: 2,  unitCost: 265.00, sku: "DTK-4803CMXPLUS",  description: "SPD trifásico 480VAC, Serie CMXPLUS, protección para cargas de alta tensión" },
+    { id: 15, name: "DTK-120/240HD",    category: "Protección Industrial",  unit: "unidades", stock: 14, minStock: 3,  unitCost: 145.00, sku: "DTK-120/240HD",    description: "Mode-SPD 50kA/ohm, 25kA, alta capacidad de descarga para entornos exigentes" },
+    { id: 16, name: "D200M-120/2083Y",  category: "Protección Industrial",  unit: "unidades", stock: 4,  minStock: 1,  unitCost: 485.00, sku: "D200M-120/2083Y",  description: "SPD modular 200kA trifásico 4 hilos, 120/208VAC — entornos de alta demanda" },
+    { id: 17, name: "D300M-120/2083Y",  category: "Protección Industrial",  unit: "unidades", stock: 3,  minStock: 1,  unitCost: 620.00, sku: "D300M-120/2083Y",  description: "SPD modular 300kA trifásico 4 hilos, 120/208VAC — protección máxima industrial" },
+
+    // ── Protección HVAC ──
+    { id: 18, name: "DTK-120/240CM+ KIT", category: "Protección HVAC",     unit: "unidades", stock: 25, minStock: 6,  unitCost: 78.00,  sku: "DTK-CM+KIT",       description: "Kit de protección HVAC completo, incluye SPD y accesorios de montaje" },
+    { id: 19, name: "DTK-IVM",           category: "Protección HVAC",      unit: "unidades", stock: 16, minStock: 4,  unitCost: 95.00,  sku: "DTK-IVM",          description: "Monitor de voltaje inteligente para HVAC, detecta bajo/alto voltaje y abre circuito" },
+    { id: 20, name: "DTK-KG2",           category: "Protección HVAC",      unit: "unidades", stock: 20, minStock: 5,  unitCost: 48.00,  sku: "DTK-KG2",          description: "Protector HVAC contra bajo y alto voltaje, protege compresores y motores" },
+    { id: 21, name: "DTK-DR120P1",       category: "Protección HVAC",      unit: "unidades", stock: 18, minStock: 4,  unitCost: 52.00,  sku: "DTK-DR120P1",      description: "SPD riel DIN 120VAC, instalación en paneles de control HVAC e industriales" },
+
+    // ── Protección Datos/Señal ──
+    { id: 22, name: "DTK-2MHLP24B",     category: "Protección Datos/Señal", unit: "unidades", stock: 45, minStock: 10, unitCost: 35.00,  sku: "DTK-2MHLP24B",     description: "Módulo SPD datos y señalización, 5A, 24VAC — alarmas de incendio y control" },
+    { id: 23, name: "DTK-MRJ31XSCPWP",  category: "Protección Datos/Señal", unit: "unidades", stock: 32, minStock: 8,  unitCost: 28.00,  sku: "DTK-MRJ31XSCPWP",  description: "Supresor RJ45 para voz/datos, conector RJ31X para panel de alarma telefónica" },
+    { id: 24, name: "DTK-2MHLP12",      category: "Protección Datos/Señal", unit: "unidades", stock: 38, minStock: 8,  unitCost: 32.00,  sku: "DTK-2MHLP12",      description: "SPD señalización 2 canales 12VDC — sistemas de alarma y control de acceso" },
+    { id: 25, name: "DTK-ESS",          category: "Protección Datos/Señal", unit: "unidades", stock: 20, minStock: 5,  unitCost: 45.00,  sku: "DTK-ESS",          description: "Supresor de sobretensión para sistemas de entrada (intercomunicadores, acceso)" },
+    { id: 26, name: "DTK-TSS2",         category: "Protección Datos/Señal", unit: "unidades", stock: 24, minStock: 6,  unitCost: 38.00,  sku: "DTK-TSS2",         description: "Supresor de señal de telecomunicaciones, protección de líneas telefónicas y datos" },
+
+    // ── Protección Video/CCTV ──
+    { id: 27, name: "DTK-IVSPA",        category: "Protección Video/CCTV",  unit: "unidades", stock: 50, minStock: 10, unitCost: 22.00,  sku: "DTK-IVSPA",        description: "Supresor CATV/satélite, broadband cable y TV digital — punto de entrada" },
+    { id: 28, name: "DTK-VSPA",         category: "Protección Video/CCTV",  unit: "unidades", stock: 35, minStock: 8,  unitCost: 28.00,  sku: "DTK-VSPA",         description: "Supresor de video análogo, CCTV coaxial — protege cámaras y grabadoras" },
+    { id: 29, name: "DTK-PVP4",         category: "Protección Video/CCTV",  unit: "unidades", stock: 18, minStock: 4,  unitCost: 42.00,  sku: "DTK-PVP4",         description: "SPD para video IP PoE, protege cámaras IP en instalaciones exteriores" },
+    { id: 30, name: "DTK-CAT6A",        category: "Protección Video/CCTV",  unit: "unidades", stock: 30, minStock: 8,  unitCost: 35.00,  sku: "DTK-CAT6A",        description: "Supresor Cat6A para cámaras IP de alta resolución, compatible con PoE+" },
+    { id: 31, name: "DTK-NETS1",        category: "Protección Video/CCTV",  unit: "unidades", stock: 22, minStock: 5,  unitCost: 38.00,  sku: "DTK-NETS1",        description: "Supresor de red Ethernet para equipos de videovigilancia y NVR" },
+
+    // ── UPS / Acondicionadores ──
+    { id: 32, name: "DTK-UPS600",       category: "UPS / Acondicionadores", unit: "unidades", stock: 8,  minStock: 2,  unitCost: 145.00, sku: "DTK-UPS600",       description: "UPS 600VA para equipos de seguridad y control, batería interna incluida" },
+    { id: 33, name: "DTK-UPS1500",      category: "UPS / Acondicionadores", unit: "unidades", stock: 5,  minStock: 1,  unitCost: 285.00, sku: "DTK-UPS1500",      description: "UPS+ 1500VA con protección de sobretensión mejorada y monitoreo de batería" },
+    { id: 34, name: "DTK-LC1500",       category: "UPS / Acondicionadores", unit: "unidades", stock: 6,  minStock: 2,  unitCost: 225.00, sku: "DTK-LC1500",       description: "Acondicionador de línea 1500W, filtra ruido eléctrico y regula voltaje" },
+
+    // ── Redes y Accesorios ──
+    { id: 35, name: "DTK-POE4",         category: "Redes y Accesorios",     unit: "unidades", stock: 10, minStock: 2,  unitCost: 185.00, sku: "DTK-POE4",         description: "Switch PoE 4 puertos DITEK Networks, con protección integrada contra sobretensiones" },
+    { id: 36, name: "DTK-POE8",         category: "Redes y Accesorios",     unit: "unidades", stock: 6,  minStock: 2,  unitCost: 295.00, sku: "DTK-POE8",         description: "Switch PoE 8 puertos DITEK Networks, gestión de energía y protección integrada" },
   ],
   projects: [
-    { id: 1, name: "Residencia López", type: "Residencial", status: "En progreso", responsible: "Carlos Méndez", materials: [{ materialId: 1, qty: 500 }, { materialId: 5, qty: 10 }, { materialId: 10, qty: 24 }], budget: 5000, createdAt: "2026-04-15" },
-    { id: 2, name: "Oficinas Torre Central", type: "Comercial", status: "En planificación", responsible: "Ana Rivera", materials: [{ materialId: 2, qty: 2000 }, { materialId: 3, qty: 100 }, { materialId: 8, qty: 4 }], budget: 25000, createdAt: "2026-05-01" },
-    { id: 3, name: "Casa García", type: "Residencial", status: "Completado", responsible: "Luis Torres", materials: [{ materialId: 1, qty: 300 }, { materialId: 7, qty: 1 }, { materialId: 9, qty: 15 }], budget: 3500, createdAt: "2026-03-10" },
+    { id: 1, name: "Residencia López", type: "Residencial", status: "En progreso", responsible: "Carlos Méndez", materials: [{ materialId: 1, qty: 2 }, { materialId: 4, qty: 6 }, { materialId: 6, qty: 1 }], budget: 450, createdAt: "2026-04-15" },
+    { id: 2, name: "Oficinas Torre Central", type: "Comercial", status: "En planificación", responsible: "Ana Rivera", materials: [{ materialId: 13, qty: 2 }, { materialId: 22, qty: 8 }, { materialId: 30, qty: 4 }], budget: 2800, createdAt: "2026-05-01" },
+    { id: 3, name: "Casa García", type: "Residencial", status: "Completado", responsible: "Luis Torres", materials: [{ materialId: 2, qty: 1 }, { materialId: 5, qty: 3 }, { materialId: 27, qty: 2 }], budget: 280, createdAt: "2026-03-10" },
   ],
   team: [
     { id: 1, name: "Carlos Méndez", role: "Supervisor", email: "carlos@empresa.com" },
@@ -31,11 +81,13 @@ const initialState = {
     { id: 5, name: "Pedro Gómez", role: "Supervisor", email: "pedro@empresa.com" },
   ],
   movements: [
-    { id: 1, type: "salida", materialId: 1, qty: 500, projectId: 1, userId: 1, date: "2026-05-10", note: "Instalación primera planta" },
-    { id: 2, type: "entrada", materialId: 1, qty: 2000, projectId: null, userId: 2, date: "2026-05-08", note: "Compra proveedor ABC" },
-    { id: 3, type: "salida", materialId: 5, qty: 10, projectId: 1, userId: 3, date: "2026-05-12", note: "Panel eléctrico cocina" },
+    { id: 1, type: "salida",  materialId: 1,  qty: 2,  projectId: 1,    userId: 1, date: "2026-05-10", note: "Instalación panel principal residencia" },
+    { id: 2, type: "entrada", materialId: 6,  qty: 10, projectId: null, userId: 2, date: "2026-05-08", note: "Compra City Electric Supply — lote DTK-120HW" },
+    { id: 3, type: "salida",  materialId: 22, qty: 4,  projectId: 2,    userId: 3, date: "2026-05-12", note: "Módulos señalización oficinas piso 3" },
+    { id: 4, type: "entrada", materialId: 13, qty: 4,  projectId: null, userId: 2, date: "2026-05-14", note: "Reposición stock industrial — proveedor CES" },
+    { id: 5, type: "salida",  materialId: 27, qty: 2,  projectId: 3,    userId: 3, date: "2026-05-15", note: "Protección CATV Casa García" },
   ],
-  nextIds: { material: 11, project: 4, team: 6, movement: 4 },
+  nextIds: { material: 37, project: 4, team: 6, movement: 6 },
 };
 
 function reducer(state, action) {
@@ -263,7 +315,7 @@ function Inventory({ state, dispatch }) {
   const [search, setSearch] = useState("");
   const [catFilter, setCatFilter] = useState("Todas");
   const [modal, setModal] = useState(null);
-  const [form, setForm] = useState({ name: "", category: CATEGORIES[0], unit: "unidades", stock: 0, minStock: 0, unitCost: 0 });
+  const [form, setForm] = useState({ name: "", category: CATEGORIES[0], unit: "unidades", stock: 0, minStock: 0, unitCost: 0, sku: "", description: "" });
   const [mvModal, setMvModal] = useState(null);
   const [mvForm, setMvForm] = useState({ type: "entrada", qty: 0, projectId: "", userId: "", note: "" });
 
@@ -274,7 +326,7 @@ function Inventory({ state, dispatch }) {
   });
 
   const openAdd = () => {
-    setForm({ name: "", category: CATEGORIES[0], unit: "unidades", stock: 0, minStock: 0, unitCost: 0 });
+    setForm({ name: "", category: CATEGORIES[0], unit: "unidades", stock: 0, minStock: 0, unitCost: 0, sku: "", description: "" });
     setModal("add");
   };
   const openEdit = (m) => { setForm(m); setModal("edit"); };
@@ -327,19 +379,22 @@ function Inventory({ state, dispatch }) {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gray-50 text-left text-gray-500">
-              <th className="p-3">Material</th>
+              <th className="p-3">Parte / Nombre</th>
               <th className="p-3">Categoría</th>
               <th className="p-3">Stock</th>
               <th className="p-3">Mín.</th>
               <th className="p-3">Costo Unit.</th>
-              <th className="p-3">Valor</th>
+              <th className="p-3">Valor Total</th>
               <th className="p-3">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map(m => (
               <tr key={m.id} className="border-t hover:bg-gray-50">
-                <td className="p-3 font-medium text-gray-800">{m.name}</td>
+                <td className="p-3">
+                  <div className="font-medium text-gray-800">{m.name}</div>
+                  {m.description && <div className="text-xs text-gray-400 mt-0.5 max-w-xs truncate">{m.description}</div>}
+                </td>
                 <td className="p-3"><Badge color="blue">{m.category}</Badge></td>
                 <td className="p-3">
                   <span className={m.stock <= m.minStock ? "text-red-600 font-bold" : ""}>
@@ -370,11 +425,18 @@ function Inventory({ state, dispatch }) {
       </div>
 
       <Modal open={!!modal} onClose={() => setModal(null)} title={modal === "add" ? "Agregar Material" : "Editar Material"}>
-        <Input label="Nombre" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-        <Select label="Categoría" options={CATEGORIES} value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} />
+        <div className="grid grid-cols-2 gap-3">
+          <div className="col-span-2"><Input label="Nombre / Modelo" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></div>
+          <Input label="SKU / Parte #" value={form.sku || ""} onChange={e => setForm({ ...form, sku: e.target.value })} />
+          <Select label="Categoría" options={CATEGORIES} value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} />
+        </div>
+        <div className="mb-3">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+          <textarea value={form.description || ""} onChange={e => setForm({ ...form, description: e.target.value })} rows={2} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-none" placeholder="Especificaciones técnicas del producto..." />
+        </div>
         <div className="grid grid-cols-2 gap-3">
           <Input label="Unidad" value={form.unit} onChange={e => setForm({ ...form, unit: e.target.value })} />
-          <Input label="Stock" type="number" value={form.stock} onChange={e => setForm({ ...form, stock: e.target.value })} />
+          <Input label="Stock actual" type="number" value={form.stock} onChange={e => setForm({ ...form, stock: e.target.value })} />
           <Input label="Stock Mínimo" type="number" value={form.minStock} onChange={e => setForm({ ...form, minStock: e.target.value })} />
           <Input label="Costo Unitario ($)" type="number" step="0.01" value={form.unitCost} onChange={e => setForm({ ...form, unitCost: e.target.value })} />
         </div>
