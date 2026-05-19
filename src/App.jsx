@@ -1,14 +1,13 @@
 import { useState, useReducer } from "react";
 
 const CATEGORIES = [
-  "Protección Residencial",
-  "Protección Comercial",
+  "Protección Residencial/Comercial",
   "Protección Industrial",
-  "Protección HVAC",
-  "Protección Datos/Señal",
-  "Protección Video/CCTV",
-  "UPS / Acondicionadores",
-  "Redes y Accesorios",
+  "Protección Industrial Modular",
+  "Protección Datos y Señal",
+  "Protección Video/PoE",
+  "Protección Iluminación",
+  "Accesorios",
 ];
 const PROJECT_TYPES = ["Residencial", "Comercial"];
 const PROJECT_STATUS = ["En planificación", "En progreso", "Completado"];
@@ -16,62 +15,54 @@ const ROLES = ["Administrador", "Supervisor", "Técnico"];
 
 const initialState = {
   materials: [
-    // ── Protección Residencial ──
-    { id: 1,  name: "DTK-120/240SA",    category: "Protección Residencial", unit: "unidades", stock: 40, minStock: 8,  unitCost: 45.00,  sku: "DTK-120/240SA",    description: "SPD residencial 120/240VAC, 100kA, para medidores y paneles pequeños" },
-    { id: 2,  name: "DTK-120/240HD2",   category: "Protección Residencial", unit: "unidades", stock: 28, minStock: 6,  unitCost: 68.00,  sku: "DTK-120/240HD2",   description: "SPD residencial/comercial ligero 100kA, split phase 120/240VAC" },
-    { id: 3,  name: "DTK-WHS",          category: "Protección Residencial", unit: "unidades", stock: 15, minStock: 4,  unitCost: 125.00, sku: "DTK-WHS",          description: "Whole House Surge Protector, protección completa para el hogar" },
-    { id: 4,  name: "DTK-1F",           category: "Protección Residencial", unit: "unidades", stock: 80, minStock: 15, unitCost: 18.50,  sku: "DTK-1F",           description: "Supresor de sobretensión de un tomacorriente, plug-in 120VAC" },
-    { id: 5,  name: "DTK-PLUG",         category: "Protección Residencial", unit: "unidades", stock: 60, minStock: 12, unitCost: 22.00,  sku: "DTK-PLUG",         description: "Supresor plug-in multipunto, protección para equipos domésticos" },
+    // ── Protección Residencial/Comercial ── (Datos reales de cityelectricsupply.com/b/ditek)
+    { id: 1,  name: "DTK-120/240CM+",      category: "Protección Residencial/Comercial", unit: "unidades", stock: 0,  minStock: 5,  unitCost: 62.95,  sku: "DTK-120/240CM+",      description: "Split Phase Surge Protective Device, 120/240 VAC — HVAC, bombas, motores, paneles" },
+    { id: 2,  name: "DTK-120/240BK1",      category: "Protección Residencial/Comercial", unit: "unidades", stock: 0,  minStock: 5,  unitCost: 83.95,  sku: "DTK-120/240BK1",      description: "Residential Load Center Surge Protective Device, 120/240 VAC" },
+    { id: 3,  name: "DTK-120/240HD",       category: "Protección Residencial/Comercial", unit: "unidades", stock: 7,  minStock: 3,  unitCost: 187.95, sku: "DTK-120/240HD",       description: "Mode-Surge Protective Device 50kA/ohm, 25kA — alta capacidad de descarga" },
+    { id: 4,  name: "DTK-120/240XD",       category: "Protección Residencial/Comercial", unit: "unidades", stock: 0,  minStock: 5,  unitCost: 118.95, sku: "DTK-120/240XD",       description: "120/240 VAC Split Phase Surge Protective Device" },
+    { id: 5,  name: "DTK-120/240HD2",      category: "Protección Residencial/Comercial", unit: "unidades", stock: 7,  minStock: 3,  unitCost: 359.00, sku: "DTK-120/240HD2",      description: "100kA Surge Protective Device — residencial y comercial ligero" },
+    { id: 6,  name: "DTK-120/240CMX",      category: "Protección Residencial/Comercial", unit: "unidades", stock: 4,  minStock: 3,  unitCost: 83.95,  sku: "DTK-120/240CMX",      description: "Split Phase Surge Protective Device, 120/240 VAC — uso exterior, NEMA 4X" },
+    { id: 7,  name: "DTK-120HW",           category: "Protección Residencial/Comercial", unit: "unidades", stock: 56, minStock: 10, unitCost: 60.99,  sku: "DTK-120HW",           description: "Parallel Connected Surge Protective Device, 120 VAC — paneles y circuitos derivados" },
+    { id: 8,  name: "DTK-8FF",             category: "Protección Residencial/Comercial", unit: "unidades", stock: 0,  minStock: 5,  unitCost: 27.99,  sku: "DTK-8FF",             description: "8 Outlet 110-120 VAC Surge Protective Device — protección punto de uso" },
 
-    // ── Protección Comercial ──
-    { id: 6,  name: "DTK-120HW",        category: "Protección Comercial",   unit: "unidades", stock: 35, minStock: 8,  unitCost: 42.00,  sku: "DTK-120HW",        description: "SPD 120VAC compacto montaje paralelo, paneles y circuitos derivados, NEMA 4X" },
-    { id: 7,  name: "DTK-240HW",        category: "Protección Comercial",   unit: "unidades", stock: 22, minStock: 5,  unitCost: 48.00,  sku: "DTK-240HW",        description: "SPD monofásico 240VAC compacto, circuitos derivados dedicados, UL1449 Tipo 1" },
-    { id: 8,  name: "DTK-120/240HW",    category: "Protección Comercial",   unit: "unidades", stock: 30, minStock: 6,  unitCost: 55.00,  sku: "DTK-120/240HW",    description: "SPD split phase 120/240VAC montaje paralelo, paneles eléctricos, NEMA 4X" },
-    { id: 9,  name: "DTK-120HWLOK",     category: "Protección Comercial",   unit: "unidades", stock: 12, minStock: 3,  unitCost: 65.00,  sku: "DTK-120HWLOK",     description: "SPD 120VAC con kit de bloqueo NFPA 72 2022, previene desconexión accidental de alarma" },
-    { id: 10, name: "DTK-120/240CMX",   category: "Protección Comercial",   unit: "unidades", stock: 20, minStock: 5,  unitCost: 85.00,  sku: "DTK-120/240CMX",   description: "SPD split phase 120/240VAC multi-propósito, Tipo 1, para uso exterior" },
-    { id: 11, name: "DTK-120/240CM+",   category: "Protección Comercial",   unit: "unidades", stock: 18, minStock: 4,  unitCost: 68.73,  sku: "DTK-120/240CM+",   description: "SPD multi-propósito Tipo 1, 120/240VAC 2P, 10kA SCCR — HVAC, bombas, motores" },
+    // ── Protección Industrial ── (Datos reales de cityelectricsupply.com)
+    { id: 9,  name: "D50-120/2083Y",       category: "Protección Industrial",             unit: "unidades", stock: 30, minStock: 8,  unitCost: 187.95, sku: "D50-120/2083Y",       description: "Panel Surge Protector 3-Phase 20kA, 120/208 VAC, NEMA 4X — trifásico 4 hilos" },
+    { id: 10, name: "D100-120/2083Y",      category: "Protección Industrial",             unit: "unidades", stock: 21, minStock: 5,  unitCost: 450.00, sku: "D100-120/2083Y",      description: "Industrial Surge Protective Device, 100kA/Phase, 120/208 VAC Wye" },
+    { id: 11, name: "D50-120/2401",        category: "Protección Industrial",             unit: "unidades", stock: 13, minStock: 4,  unitCost: 188.95, sku: "D50-120/2401",        description: "Industrial Surge Protective Device 50kA/Phase — 120/240VAC Split Phase" },
+    { id: 12, name: "D50-277/4803Y",       category: "Protección Industrial",             unit: "unidades", stock: 10, minStock: 3,  unitCost: 193.95, sku: "D50-277/4803Y",       description: "Industrial SPD 50kA/Phase, 277/480 VAC, 4-Wire, Surface Mount" },
+    { id: 13, name: "D100-277/4803Y",      category: "Protección Industrial",             unit: "unidades", stock: 15, minStock: 4,  unitCost: 450.00, sku: "D100-277/4803Y",      description: "Industrial Surge Protective Device, 100kA/Phase, 277/480 VAC Wye" },
+    { id: 14, name: "D100-120/2401",       category: "Protección Industrial",             unit: "unidades", stock: 9,  minStock: 3,  unitCost: 450.00, sku: "D100-120/2401",       description: "Industrial Surge Protective Device, 100kA/Phase, 120/240 VAC Split Phase" },
+    { id: 15, name: "D50-120/240HL",       category: "Protección Industrial",             unit: "unidades", stock: 14, minStock: 4,  unitCost: 188.95, sku: "D50-120/240HL",       description: "Industrial SPD 50kA/Phase, 120/240 VAC Delta High Leg, 4-Wire, Surface Mount" },
+    { id: 16, name: "D200-120/2083Y",      category: "Protección Industrial",             unit: "unidades", stock: 8,  minStock: 2,  unitCost: 1020.00, sku: "D200-120/2083Y",     description: "Industrial Surge Protective Device, 200kA/Phase, 120/208VAC Wye" },
 
-    // ── Protección Industrial ──
-    { id: 12, name: "D50-120/2401",     category: "Protección Industrial",  unit: "unidades", stock: 10, minStock: 3,  unitCost: 185.00, sku: "D50-120/2401",     description: "SPD industrial 50kA/fase, componentes fusibles individuales, 120/240VAC" },
-    { id: 13, name: "DTK-2403CMXPLUS",  category: "Protección Industrial",  unit: "unidades", stock: 8,  minStock: 2,  unitCost: 220.00, sku: "DTK-2403CMXPLUS",  description: "SPD trifásico 240VAC, Serie CMXPLUS, equipos industriales y paneles" },
-    { id: 14, name: "DTK-4803CMXPLUS",  category: "Protección Industrial",  unit: "unidades", stock: 6,  minStock: 2,  unitCost: 265.00, sku: "DTK-4803CMXPLUS",  description: "SPD trifásico 480VAC, Serie CMXPLUS, protección para cargas de alta tensión" },
-    { id: 15, name: "DTK-120/240HD",    category: "Protección Industrial",  unit: "unidades", stock: 14, minStock: 3,  unitCost: 145.00, sku: "DTK-120/240HD",    description: "Mode-SPD 50kA/ohm, 25kA, alta capacidad de descarga para entornos exigentes" },
-    { id: 16, name: "D200M-120/2083Y",  category: "Protección Industrial",  unit: "unidades", stock: 4,  minStock: 1,  unitCost: 485.00, sku: "D200M-120/2083Y",  description: "SPD modular 200kA trifásico 4 hilos, 120/208VAC — entornos de alta demanda" },
-    { id: 17, name: "D300M-120/2083Y",  category: "Protección Industrial",  unit: "unidades", stock: 3,  minStock: 1,  unitCost: 620.00, sku: "D300M-120/2083Y",  description: "SPD modular 300kA trifásico 4 hilos, 120/208VAC — protección máxima industrial" },
+    // ── Protección Industrial Modular ── (Datos reales de cityelectricsupply.com)
+    { id: 17, name: "D200M-120/2083Y",     category: "Protección Industrial Modular",     unit: "unidades", stock: 15, minStock: 3,  unitCost: 1696.00, sku: "D200M-120/2083Y",    description: "200kA Modular Surge Protective Device, 3-Phase, 4-Wire, 120/208 VAC" },
+    { id: 18, name: "D200M-277/4803Y",     category: "Protección Industrial Modular",     unit: "unidades", stock: 11, minStock: 3,  unitCost: 1646.00, sku: "D200M-277/4803Y",    description: "200kA Modular Surge Protective Device, 3-Phase, 4-Wire, 277/480 VAC" },
+    { id: 19, name: "D300M-120/2083Y",     category: "Protección Industrial Modular",     unit: "unidades", stock: 10, minStock: 2,  unitCost: 2086.00, sku: "D300M-120/2083Y",    description: "300kA Modular Surge Protective Device, 3-Phase, 4-Wire, 120/208 VAC" },
+    { id: 20, name: "D300M-277/4803Y",     category: "Protección Industrial Modular",     unit: "unidades", stock: 10, minStock: 2,  unitCost: 2051.00, sku: "D300M-277/4803Y",    description: "300kA Modular Surge Protective Device, 3-Phase, 4-Wire, 277/480 VAC" },
 
-    // ── Protección HVAC ──
-    { id: 18, name: "DTK-120/240CM+ KIT", category: "Protección HVAC",     unit: "unidades", stock: 25, minStock: 6,  unitCost: 78.00,  sku: "DTK-CM+KIT",       description: "Kit de protección HVAC completo, incluye SPD y accesorios de montaje" },
-    { id: 19, name: "DTK-IVM",           category: "Protección HVAC",      unit: "unidades", stock: 16, minStock: 4,  unitCost: 95.00,  sku: "DTK-IVM",          description: "Monitor de voltaje inteligente para HVAC, detecta bajo/alto voltaje y abre circuito" },
-    { id: 20, name: "DTK-KG2",           category: "Protección HVAC",      unit: "unidades", stock: 20, minStock: 5,  unitCost: 48.00,  sku: "DTK-KG2",          description: "Protector HVAC contra bajo y alto voltaje, protege compresores y motores" },
-    { id: 21, name: "DTK-DR120P1",       category: "Protección HVAC",      unit: "unidades", stock: 18, minStock: 4,  unitCost: 52.00,  sku: "DTK-DR120P1",      description: "SPD riel DIN 120VAC, instalación en paneles de control HVAC e industriales" },
+    // ── Protección Datos y Señal ── (Datos reales de cityelectricsupply.com)
+    { id: 21, name: "DTK-2MHLP24B",       category: "Protección Datos y Señal",          unit: "unidades", stock: 0,  minStock: 5,  unitCost: 67.95,  sku: "DTK-2MHLP24B",       description: "Data and Signaling Circuit Surge Protection Module, 5A, 24 VAC — alarmas, control" },
+    { id: 22, name: "DTK-2MHLP24BWB",     category: "Protección Datos y Señal",          unit: "unidades", stock: 5,  minStock: 3,  unitCost: 83.95,  sku: "DTK-2MHLP24BWB",     description: "Data and Signaling Circuit SPD with Snap-Track Base, 24 VAC/VDC, Short to Ground" },
+    { id: 23, name: "DTK-2MHLP5BWB",      category: "Protección Datos y Señal",          unit: "unidades", stock: 8,  minStock: 3,  unitCost: 84.95,  sku: "DTK-2MHLP5BWB",      description: "Voice, Data and Signaling Circuit Modular SPD, 5 VAC/VDC Service Voltage" },
+    { id: 24, name: "DTK-2MHLP75BWB",     category: "Protección Datos y Señal",          unit: "unidades", stock: 6,  minStock: 3,  unitCost: 77.95,  sku: "DTK-2MHLP75BWB",     description: "Data and Signaling Circuit SPD with Snap-Track Base, 75 VAC/VDC, Short to Ground" },
+    { id: 25, name: "DTK-2LVLPLV",        category: "Protección Datos y Señal",          unit: "unidades", stock: 11, minStock: 4,  unitCost: 52.95,  sku: "DTK-2LVLPLV",        description: "Data and Signaling Circuit Surge Protector, 24 VAC Service Voltage, 2 Pair" },
+    { id: 26, name: "DTK-2LVLPSCPRUV",    category: "Protección Datos y Señal",          unit: "unidades", stock: 3,  minStock: 3,  unitCost: 50.99,  sku: "DTK-2LVLPSCPRUV",    description: "Low Voltage Surge Protector, 2 Pair, 22-16 AWG, 15A Sneak Current Protection" },
 
-    // ── Protección Datos/Señal ──
-    { id: 22, name: "DTK-2MHLP24B",     category: "Protección Datos/Señal", unit: "unidades", stock: 45, minStock: 10, unitCost: 35.00,  sku: "DTK-2MHLP24B",     description: "Módulo SPD datos y señalización, 5A, 24VAC — alarmas de incendio y control" },
-    { id: 23, name: "DTK-MRJ31XSCPWP",  category: "Protección Datos/Señal", unit: "unidades", stock: 32, minStock: 8,  unitCost: 28.00,  sku: "DTK-MRJ31XSCPWP",  description: "Supresor RJ45 para voz/datos, conector RJ31X para panel de alarma telefónica" },
-    { id: 24, name: "DTK-2MHLP12",      category: "Protección Datos/Señal", unit: "unidades", stock: 38, minStock: 8,  unitCost: 32.00,  sku: "DTK-2MHLP12",      description: "SPD señalización 2 canales 12VDC — sistemas de alarma y control de acceso" },
-    { id: 25, name: "DTK-ESS",          category: "Protección Datos/Señal", unit: "unidades", stock: 20, minStock: 5,  unitCost: 45.00,  sku: "DTK-ESS",          description: "Supresor de sobretensión para sistemas de entrada (intercomunicadores, acceso)" },
-    { id: 26, name: "DTK-TSS2",         category: "Protección Datos/Señal", unit: "unidades", stock: 24, minStock: 6,  unitCost: 38.00,  sku: "DTK-TSS2",         description: "Supresor de señal de telecomunicaciones, protección de líneas telefónicas y datos" },
+    // ── Protección Video/PoE ── (Datos reales de cityelectricsupply.com)
+    { id: 27, name: "DTK-MRJPOE",         category: "Protección Video/PoE",              unit: "unidades", stock: 8,  minStock: 3,  unitCost: 62.95,  sku: "DTK-MRJPOE",         description: "Power Over Ethernet Surge Protector — protege cámaras IP y dispositivos PoE" },
 
-    // ── Protección Video/CCTV ──
-    { id: 27, name: "DTK-IVSPA",        category: "Protección Video/CCTV",  unit: "unidades", stock: 50, minStock: 10, unitCost: 22.00,  sku: "DTK-IVSPA",        description: "Supresor CATV/satélite, broadband cable y TV digital — punto de entrada" },
-    { id: 28, name: "DTK-VSPA",         category: "Protección Video/CCTV",  unit: "unidades", stock: 35, minStock: 8,  unitCost: 28.00,  sku: "DTK-VSPA",         description: "Supresor de video análogo, CCTV coaxial — protege cámaras y grabadoras" },
-    { id: 29, name: "DTK-PVP4",         category: "Protección Video/CCTV",  unit: "unidades", stock: 18, minStock: 4,  unitCost: 42.00,  sku: "DTK-PVP4",         description: "SPD para video IP PoE, protege cámaras IP en instalaciones exteriores" },
-    { id: 30, name: "DTK-CAT6A",        category: "Protección Video/CCTV",  unit: "unidades", stock: 30, minStock: 8,  unitCost: 35.00,  sku: "DTK-CAT6A",        description: "Supresor Cat6A para cámaras IP de alta resolución, compatible con PoE+" },
-    { id: 31, name: "DTK-NETS1",        category: "Protección Video/CCTV",  unit: "unidades", stock: 22, minStock: 5,  unitCost: 38.00,  sku: "DTK-NETS1",        description: "Supresor de red Ethernet para equipos de videovigilancia y NVR" },
+    // ── Protección Iluminación ── (Datos reales de cityelectricsupply.com)
+    { id: 28, name: "DTK-DL480",          category: "Protección Iluminación",            unit: "unidades", stock: 0,  minStock: 3,  unitCost: 69.99,  sku: "DTK-DL480",          description: "Single-Phase Light Pole Surge Arrestor, 50000A, 480 VAC — postes de alumbrado" },
 
-    // ── UPS / Acondicionadores ──
-    { id: 32, name: "DTK-UPS600",       category: "UPS / Acondicionadores", unit: "unidades", stock: 8,  minStock: 2,  unitCost: 145.00, sku: "DTK-UPS600",       description: "UPS 600VA para equipos de seguridad y control, batería interna incluida" },
-    { id: 33, name: "DTK-UPS1500",      category: "UPS / Acondicionadores", unit: "unidades", stock: 5,  minStock: 1,  unitCost: 285.00, sku: "DTK-UPS1500",      description: "UPS+ 1500VA con protección de sobretensión mejorada y monitoreo de batería" },
-    { id: 34, name: "DTK-LC1500",       category: "UPS / Acondicionadores", unit: "unidades", stock: 6,  minStock: 2,  unitCost: 225.00, sku: "DTK-LC1500",       description: "Acondicionador de línea 1500W, filtra ruido eléctrico y regula voltaje" },
-
-    // ── Redes y Accesorios ──
-    { id: 35, name: "DTK-POE4",         category: "Redes y Accesorios",     unit: "unidades", stock: 10, minStock: 2,  unitCost: 185.00, sku: "DTK-POE4",         description: "Switch PoE 4 puertos DITEK Networks, con protección integrada contra sobretensiones" },
-    { id: 36, name: "DTK-POE8",         category: "Redes y Accesorios",     unit: "unidades", stock: 6,  minStock: 2,  unitCost: 295.00, sku: "DTK-POE8",         description: "Switch PoE 8 puertos DITEK Networks, gestión de energía y protección integrada" },
+    // ── Accesorios ── (Datos reales de cityelectricsupply.com)
+    { id: 29, name: "DTK-FMKHD",          category: "Accesorios",                        unit: "unidades", stock: 11, minStock: 4,  unitCost: 33.29,  sku: "DTK-FMKHD",          description: "Flush Mount Kit para DTK-120/240HD — kit de montaje empotrado" },
+    { id: 30, name: "KIT-120SRD",         category: "Accesorios",                        unit: "unidades", stock: 0,  minStock: 3,  unitCost: 10.99,  sku: "KIT-120SRD",         description: "Cover Kit para DTK-120SRD — cubierta de reemplazo" },
   ],
   projects: [
-    { id: 1, name: "Residencia López", type: "Residencial", status: "En progreso", responsible: "Carlos Méndez", materials: [{ materialId: 1, qty: 2 }, { materialId: 4, qty: 6 }, { materialId: 6, qty: 1 }], budget: 450, createdAt: "2026-04-15" },
-    { id: 2, name: "Oficinas Torre Central", type: "Comercial", status: "En planificación", responsible: "Ana Rivera", materials: [{ materialId: 13, qty: 2 }, { materialId: 22, qty: 8 }, { materialId: 30, qty: 4 }], budget: 2800, createdAt: "2026-05-01" },
-    { id: 3, name: "Casa García", type: "Residencial", status: "Completado", responsible: "Luis Torres", materials: [{ materialId: 2, qty: 1 }, { materialId: 5, qty: 3 }, { materialId: 27, qty: 2 }], budget: 280, createdAt: "2026-03-10" },
+    { id: 1, name: "Residencia López",      type: "Residencial", status: "En progreso",    responsible: "Carlos Méndez", materials: [{ materialId: 1, qty: 2 }, { materialId: 7, qty: 1 }, { materialId: 8, qty: 3 }], budget: 320,  createdAt: "2026-04-15" },
+    { id: 2, name: "Oficinas Torre Central",type: "Comercial",   status: "En planificación",responsible: "Ana Rivera",    materials: [{ materialId: 9, qty: 2 }, { materialId: 21, qty: 6 }, { materialId: 27, qty: 4 }], budget: 1250, createdAt: "2026-05-01" },
+    { id: 3, name: "Casa García",           type: "Residencial", status: "Completado",      responsible: "Luis Torres",   materials: [{ materialId: 2, qty: 1 }, { materialId: 7, qty: 2 }, { materialId: 29, qty: 1 }], budget: 280,  createdAt: "2026-03-10" },
   ],
   team: [
     { id: 1, name: "Carlos Méndez", role: "Supervisor", email: "carlos@empresa.com" },
@@ -81,13 +72,13 @@ const initialState = {
     { id: 5, name: "Pedro Gómez", role: "Supervisor", email: "pedro@empresa.com" },
   ],
   movements: [
-    { id: 1, type: "salida",  materialId: 1,  qty: 2,  projectId: 1,    userId: 1, date: "2026-05-10", note: "Instalación panel principal residencia" },
-    { id: 2, type: "entrada", materialId: 6,  qty: 10, projectId: null, userId: 2, date: "2026-05-08", note: "Compra City Electric Supply — lote DTK-120HW" },
-    { id: 3, type: "salida",  materialId: 22, qty: 4,  projectId: 2,    userId: 3, date: "2026-05-12", note: "Módulos señalización oficinas piso 3" },
-    { id: 4, type: "entrada", materialId: 13, qty: 4,  projectId: null, userId: 2, date: "2026-05-14", note: "Reposición stock industrial — proveedor CES" },
-    { id: 5, type: "salida",  materialId: 27, qty: 2,  projectId: 3,    userId: 3, date: "2026-05-15", note: "Protección CATV Casa García" },
+    { id: 1, type: "salida",  materialId: 1,  qty: 2,  projectId: 1,    userId: 1, date: "2026-05-10", note: "Instalación panel principal — Residencia López" },
+    { id: 2, type: "entrada", materialId: 7,  qty: 20, projectId: null, userId: 2, date: "2026-05-08", note: "Compra City Electric Supply — lote DTK-120HW" },
+    { id: 3, type: "salida",  materialId: 21, qty: 4,  projectId: 2,    userId: 3, date: "2026-05-12", note: "Módulos señalización — Oficinas Torre Central piso 3" },
+    { id: 4, type: "entrada", materialId: 9,  qty: 10, projectId: null, userId: 2, date: "2026-05-14", note: "Reposición stock industrial — proveedor CES" },
+    { id: 5, type: "salida",  materialId: 27, qty: 2,  projectId: 2,    userId: 3, date: "2026-05-15", note: "Protección PoE cámaras — Torre Central" },
   ],
-  nextIds: { material: 37, project: 4, team: 6, movement: 6 },
+  nextIds: { material: 31, project: 4, team: 6, movement: 6 },
 };
 
 function reducer(state, action) {
