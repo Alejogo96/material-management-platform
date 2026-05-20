@@ -8,6 +8,10 @@ const CATEGORIES = [
   "Protección Video/PoE",
   "Protección Iluminación",
   "Accesorios",
+  "Cables y Conductores",
+  "Breakers y Tableros",
+  "Conectores y Conduit",
+  "Iluminación",
 ];
 const PROJECT_TYPES = ["Residencial", "Comercial"];
 const PROJECT_STATUS = ["En planificación", "En progreso", "Completado"];
@@ -58,6 +62,74 @@ const initialState = {
     // ── Accesorios ── (Datos reales de cityelectricsupply.com)
     { id: 29, name: "DTK-FMKHD",          category: "Accesorios",                        unit: "unidades", stock: 11, minStock: 4,  unitCost: 33.29,  sku: "DTK-FMKHD",          description: "Flush Mount Kit para DTK-120/240HD — kit de montaje empotrado" },
     { id: 30, name: "KIT-120SRD",         category: "Accesorios",                        unit: "unidades", stock: 0,  minStock: 3,  unitCost: 10.99,  sku: "KIT-120SRD",         description: "Cover Kit para DTK-120SRD — cubierta de reemplazo" },
+
+    // ── Cables y Conductores ──
+    { id: 31, name: "THHN 12 AWG Negro",        category: "Cables y Conductores", unit: "rollo (500ft)", stock: 25, minStock: 5,  unitCost: 118.50, sku: "SW-THHN-12BK-500",    description: "Southwire THHN/THWN-2, 12 AWG, 500ft, negro — construcción y uso general, 90°C seco/75°C húmedo" },
+    { id: 32, name: "THHN 12 AWG Blanco",       category: "Cables y Conductores", unit: "rollo (500ft)", stock: 22, minStock: 5,  unitCost: 118.50, sku: "SW-THHN-12WH-500",    description: "Southwire THHN/THWN-2, 12 AWG, 500ft, blanco — cableado de circuitos de 20A" },
+    { id: 33, name: "THHN 12 AWG Verde",        category: "Cables y Conductores", unit: "rollo (500ft)", stock: 18, minStock: 4,  unitCost: 118.50, sku: "SW-THHN-12GR-500",    description: "Southwire THHN/THWN-2, 12 AWG, 500ft, verde — conductor de tierra en circuitos de 20A" },
+    { id: 34, name: "THHN 10 AWG Negro",        category: "Cables y Conductores", unit: "rollo (500ft)", stock: 15, minStock: 4,  unitCost: 191.25, sku: "SW-THHN-10BK-500",    description: "Southwire THHN/THWN-2, 10 AWG, 500ft, negro — circuitos de 30A, secadoras y A/C" },
+    { id: 35, name: "THHN 8 AWG Negro",         category: "Cables y Conductores", unit: "rollo (500ft)", stock: 10, minStock: 3,  unitCost: 317.00, sku: "SW-THHN-8BK-500",     description: "Southwire THHN/THWN-2, 8 AWG, 500ft, negro — circuitos de 40-50A, tomas de alto voltaje" },
+    { id: 36, name: "THHN 6 AWG Negro",         category: "Cables y Conductores", unit: "rollo (250ft)", stock: 8,  minStock: 3,  unitCost: 259.50, sku: "SW-THHN-6BK-250",     description: "Southwire THHN/THWN-2, 6 AWG, 250ft, negro — alimentadores de tableros y circuitos de 60A" },
+    { id: 37, name: "Romex 14/2 NM-B",          category: "Cables y Conductores", unit: "rollo (250ft)", stock: 30, minStock: 8,  unitCost: 83.25,  sku: "SW-NMB-142-250",      description: "Southwire Romex, 14/2 con tierra, NM-B, 250ft — cableado residencial, circuitos de 15A" },
+    { id: 38, name: "Romex 12/2 NM-B",          category: "Cables y Conductores", unit: "rollo (250ft)", stock: 28, minStock: 8,  unitCost: 119.75, sku: "SW-NMB-122-250",      description: "Southwire Romex, 12/2 con tierra, NM-B, 250ft — circuitos de 20A, tomas de cocina y baño" },
+    { id: 39, name: "Romex 12/3 NM-B",          category: "Cables y Conductores", unit: "rollo (250ft)", stock: 16, minStock: 5,  unitCost: 162.50, sku: "SW-NMB-123-250",      description: "Southwire Romex, 12/3 con tierra, NM-B, 250ft — circuitos de 3 hilos, switchers de 3 vías" },
+    { id: 40, name: "Romex 10/2 NM-B",          category: "Cables y Conductores", unit: "rollo (250ft)", stock: 12, minStock: 4,  unitCost: 184.00, sku: "SW-NMB-102-250",      description: "Southwire Romex, 10/2 con tierra, NM-B, 250ft — circuitos de 30A, cocinas eléctricas" },
+    { id: 41, name: "MC Cable 12/2",             category: "Cables y Conductores", unit: "rollo (250ft)", stock: 10, minStock: 3,  unitCost: 275.00, sku: "SW-MC-122-250",       description: "Southwire MC Cable, 12/2 con tierra, armor metálico, 250ft — aplicaciones comerciales e industriales" },
+    { id: 42, name: "SER Aluminio 2-2-4",        category: "Cables y Conductores", unit: "rollo (100ft)", stock: 6,  minStock: 2,  unitCost: 489.00, sku: "SW-SER-224-100",      description: "Southwire SER Aluminio 2-2-4 AWG, 100ft — acometidas de servicios residenciales 200A" },
+    { id: 43, name: "XHHW-2 4 AWG Negro",        category: "Cables y Conductores", unit: "rollo (500ft)", stock: 7,  minStock: 2,  unitCost: 534.00, sku: "SW-XHHW2-4BK-500",   description: "Encore Wire XHHW-2, 4 AWG, 500ft, negro — aplicaciones industriales húmedas y secas, 90°C" },
+    { id: 44, name: "UFB-W 12/2 Underground",    category: "Cables y Conductores", unit: "rollo (250ft)", stock: 9,  minStock: 3,  unitCost: 147.50, sku: "EW-UFB-122-250",      description: "Encore Wire UFB-W, 12/2, 250ft — cable directo enterrado, circuitos exteriores y jardines" },
+    { id: 45, name: "Cable Termostato 18/5",     category: "Cables y Conductores", unit: "rollo (250ft)", stock: 14, minStock: 4,  unitCost: 62.95,  sku: "BD-TSTAT-185-250",    description: "Belden 18 AWG, 5 conductores, 250ft — control de termostatos HVAC, color codificado" },
+
+    // ── Breakers y Tableros ──
+    { id: 46, name: "Square D QO115 15A 1P",    category: "Breakers y Tableros",  unit: "unidades", stock: 50, minStock: 15, unitCost: 8.95,   sku: "SQD-QO115",           description: "Square D QO 15A 1-Polo 120V — interruptor de circuito residencial/comercial, plug-in" },
+    { id: 47, name: "Square D QO120 20A 1P",    category: "Breakers y Tableros",  unit: "unidades", stock: 48, minStock: 15, unitCost: 9.50,   sku: "SQD-QO120",           description: "Square D QO 20A 1-Polo 120V — circuitos de cocina, baño y uso general" },
+    { id: 48, name: "Square D QO230 30A 2P",    category: "Breakers y Tableros",  unit: "unidades", stock: 30, minStock: 10, unitCost: 14.95,  sku: "SQD-QO230",           description: "Square D QO 30A 2-Polos 240V — secadoras, calentadores de agua, A/C pequeños" },
+    { id: 49, name: "Square D QO240 40A 2P",    category: "Breakers y Tableros",  unit: "unidades", stock: 20, minStock: 8,  unitCost: 17.50,  sku: "SQD-QO240",           description: "Square D QO 40A 2-Polos 240V — cocinas eléctricas, hornos empotrados" },
+    { id: 50, name: "Square D QO260 60A 2P",    category: "Breakers y Tableros",  unit: "unidades", stock: 18, minStock: 6,  unitCost: 22.50,  sku: "SQD-QO260",           description: "Square D QO 60A 2-Polos 240V — alimentadores de subtableros, A/C central" },
+    { id: 51, name: "Square D HOM6-12L100PG",   category: "Breakers y Tableros",  unit: "unidades", stock: 8,  minStock: 3,  unitCost: 149.95, sku: "SQD-HOM612L100PG",   description: "Square D HomeLine 100A, 6/12 circuitos, caja de carga 120/240V — residencial" },
+    { id: 52, name: "Square D QO130L200PG",     category: "Breakers y Tableros",  unit: "unidades", stock: 5,  minStock: 2,  unitCost: 285.00, sku: "SQD-QO130L200PG",    description: "Square D QO 200A, 30 circuitos, panel de carga 120/240V con interruptor principal" },
+    { id: 53, name: "Eaton CH115 15A 1P",       category: "Breakers y Tableros",  unit: "unidades", stock: 40, minStock: 12, unitCost: 8.25,   sku: "ETN-CH115",           description: "Eaton CH 15A 1-Polo 120V — interruptor de circuito plug-in para tableros Eaton/CH" },
+    { id: 54, name: "Eaton CH120 20A 1P",       category: "Breakers y Tableros",  unit: "unidades", stock: 38, minStock: 12, unitCost: 8.95,   sku: "ETN-CH120",           description: "Eaton CH 20A 1-Polo 120V — circuitos de 20A para uso residencial y comercial" },
+    { id: 55, name: "Eaton CH230 30A 2P",       category: "Breakers y Tableros",  unit: "unidades", stock: 22, minStock: 8,  unitCost: 14.25,  sku: "ETN-CH230",           description: "Eaton CH 30A 2-Polos 240V — cargas eléctricas de alta demanda" },
+    { id: 56, name: "Siemens Q115 15A 1P",      category: "Breakers y Tableros",  unit: "unidades", stock: 35, minStock: 10, unitCost: 7.95,   sku: "SIE-Q115",            description: "Siemens QP 15A 1-Polo 120V — plug-in para tableros Siemens/Murray/Gould" },
+    { id: 57, name: "Siemens Q120 20A 1P",      category: "Breakers y Tableros",  unit: "unidades", stock: 32, minStock: 10, unitCost: 8.50,   sku: "SIE-Q120",            description: "Siemens QP 20A 1-Polo 120V — circuitos de uso general y cocina" },
+    { id: 58, name: "Siemens EQ8100ARM",        category: "Breakers y Tableros",  unit: "unidades", stock: 4,  minStock: 2,  unitCost: 378.00, sku: "SIE-EQ8100ARM",       description: "Siemens 100A Main Breaker Panel, 8/16 circuitos — tablero con interruptor principal y protección AFCI" },
+    { id: 59, name: "GE THQB1115 15A 1P",      category: "Breakers y Tableros",  unit: "unidades", stock: 28, minStock: 8,  unitCost: 7.50,   sku: "GE-THQB1115",         description: "GE THQB 15A 1-Polo 120V — bolt-on para tableros GE, uso comercial" },
+    { id: 60, name: "ABB 3P 100A Tripolar",     category: "Breakers y Tableros",  unit: "unidades", stock: 6,  minStock: 2,  unitCost: 185.00, sku: "ABB-T2S100-3P",       description: "ABB Tmax T2S 100A 3-Polos 480V — interruptor industrial para tableros de media tensión" },
+
+    // ── Conectores y Conduit ──
+    { id: 61, name: "Conduit EMT 1/2\" - 10ft", category: "Conectores y Conduit", unit: "piezas", stock: 120, minStock: 30, unitCost: 4.45,   sku: "ALD-EMT-12-10",       description: "Allied EMT 1/2\", 10 pies, calibre 18 — tubería eléctrica metálica para instalaciones expuestas" },
+    { id: 62, name: "Conduit EMT 3/4\" - 10ft", category: "Conectores y Conduit", unit: "piezas", stock: 95,  minStock: 25, unitCost: 6.25,   sku: "ALD-EMT-34-10",       description: "Allied EMT 3/4\", 10 pies — para cableado de circuitos de mayor calibre en exteriores" },
+    { id: 63, name: "Conduit EMT 1\" - 10ft",   category: "Conectores y Conduit", unit: "piezas", stock: 60,  minStock: 15, unitCost: 9.50,   sku: "ALD-EMT-1-10",        description: "Allied EMT 1\", 10 pies — alimentadores y acometidas en instalaciones comerciales" },
+    { id: 64, name: "Conduit PVC 1/2\" - 10ft", category: "Conectores y Conduit", unit: "piezas", stock: 150, minStock: 40, unitCost: 2.95,   sku: "CAR-PVC-12-10",       description: "Carlon PVC Schedule 40, 1/2\", 10 pies — uso subterráneo e instalaciones húmedas" },
+    { id: 65, name: "Conduit PVC 3/4\" - 10ft", category: "Conectores y Conduit", unit: "piezas", stock: 120, minStock: 30, unitCost: 3.75,   sku: "CAR-PVC-34-10",       description: "Carlon PVC Schedule 40, 3/4\", 10 pies — subterráneo y uso exterior en plomadas" },
+    { id: 66, name: "Conduit PVC 1\" - 10ft",   category: "Conectores y Conduit", unit: "piezas", stock: 80,  minStock: 20, unitCost: 5.50,   sku: "CAR-PVC-1-10",        description: "Carlon PVC Schedule 40, 1\", 10 pies — alimentadores subterráneos y canalizaciones" },
+    { id: 67, name: "Caja metálica 4x4",         category: "Conectores y Conduit", unit: "piezas", stock: 75,  minStock: 20, unitCost: 3.25,   sku: "RAC-4SQ-112",         description: "Raco caja de salida metálica 4\"x4\"x1-1/2\" — instalaciones de conduit EMT/Rigid" },
+    { id: 68, name: "Caja PVC 1 gang",           category: "Conectores y Conduit", unit: "piezas", stock: 100, minStock: 25, unitCost: 1.25,   sku: "CAR-B114A",           description: "Carlon caja PVC 1 gang, 14.5 ci — para interruptores y tomacorrientes en conduit PVC" },
+    { id: 69, name: "Conector EMT 1/2\" set-screw", category: "Conectores y Conduit", unit: "piezas", stock: 200, minStock: 50, unitCost: 0.65, sku: "TnB-5133-12",        description: "Thomas & Betts conector EMT 1/2\" set-screw — conexión a caja metálica, acero zincado" },
+    { id: 70, name: "Conector EMT 3/4\" set-screw", category: "Conectores y Conduit", unit: "piezas", stock: 160, minStock: 40, unitCost: 0.85, sku: "TnB-5133-34",        description: "Thomas & Betts conector EMT 3/4\" set-screw — conexión de conduit a cajas y tableros" },
+    { id: 71, name: "Coupling EMT 1/2\"",        category: "Conectores y Conduit", unit: "piezas", stock: 180, minStock: 40, unitCost: 0.55,   sku: "TnB-5140-12",         description: "Thomas & Betts coupling EMT 1/2\" set-screw — unión de tramos de conduit" },
+    { id: 72, name: "Caja intemperie 1 gang",    category: "Conectores y Conduit", unit: "piezas", stock: 45,  minStock: 10, unitCost: 6.50,   sku: "HBL-5310-0",          description: "Hubbell caja exterior 1 gang, NEMA 3R, riser — para tomas y switches en exteriores" },
+    { id: 73, name: "Wire Nuts amarillo (100pk)", category: "Conectores y Conduit", unit: "paquete", stock: 30, minStock: 8,  unitCost: 8.95,   sku: "3M-Y1-100PK",         description: "3M Scotchlok conectores de alambre amarillo, 100 unidades — empalmes 12-10 AWG" },
+    { id: 74, name: "Grapa cable 1/2\" (100pk)", category: "Conectores y Conduit", unit: "paquete", stock: 25,  minStock: 6,  unitCost: 4.25,   sku: "GBR-STPL-12-100",     description: "Grapas de cable romex/MC 1/2\", 100 unidades — fijación de cables NM-B a madera" },
+    { id: 75, name: "Cable tie nylon 8\" (100pk)",category: "Conectores y Conduit", unit: "paquete", stock: 40, minStock: 10, unitCost: 5.95,   sku: "PAN-PLT2S-100",       description: "Panduit cable tie nylon 8\", 50 lb, 100 unidades — organización de cables y mazos" },
+
+    // ── Iluminación ──
+    { id: 76, name: "LED A19 9W 2700K (16pk)",  category: "Iluminación",           unit: "paquete", stock: 35,  minStock: 10, unitCost: 22.95,  sku: "PHI-A19-9W-16PK",     description: "Philips LED A19, 9W equiv. 60W, 2700K cálida, 800lm, base E26 — uso general residencial" },
+    { id: 77, name: "LED PAR38 18W 3000K",      category: "Iluminación",           unit: "unidades", stock: 28, minStock: 8,  unitCost: 12.95,  sku: "GE-PAR38-18W-3K",     description: "GE LED PAR38, 18W equiv. 100W, 3000K, 1350lm, dimmable — iluminación de acento y comercial" },
+    { id: 78, name: "LED T8 4ft 18W 5000K",     category: "Iluminación",           unit: "unidades", stock: 50, minStock: 15, unitCost: 9.50,   sku: "SYL-T8-18W-5K",       description: "Sylvania LED T8, 4ft, 18W, 5000K luz día, 2200lm — reemplazo directo fluorescente, Type A+B" },
+    { id: 79, name: "LED Shop Light 4ft 5000K", category: "Iluminación",           unit: "unidades", stock: 22, minStock: 6,  unitCost: 28.50,  sku: "LTH-2SQTL-40",        description: "Lithonia Lighting LED shoplight 4ft, 40W, 5000K, 4400lm — garajes, bodegas y talleres" },
+    { id: 80, name: "LED Recessed 6\" 12W 3000K",category: "Iluminación",          unit: "unidades", stock: 40, minStock: 12, unitCost: 15.95,  sku: "HALO-RL560-3K",       description: "Halo LED recessed 6\", 12W, 3000K, 850lm, dimmable — downlight residencial y comercial" },
+    { id: 81, name: "LED Area Light 100W 5000K", category: "Iluminación",          unit: "unidades", stock: 10, minStock: 3,  unitCost: 124.95, sku: "LTH-KAD-100L",        description: "Lithonia LED area light 100W, 5000K, 12000lm, NEMA 3R — estacionamientos y exteriores" },
+    { id: 82, name: "LED Street Light 150W",    category: "Iluminación",           unit: "unidades", stock: 6,  minStock: 2,  unitCost: 245.00, sku: "CREE-OSQ-150L",       description: "Cree LED street light 150W, 5000K, 18750lm — postes de alumbrado público vías urbanas" },
+    { id: 83, name: "Exit Sign LED Doble cara", category: "Iluminación",           unit: "unidades", stock: 18, minStock: 5,  unitCost: 35.95,  sku: "LTH-EXR9-LED",        description: "Lithonia exit sign LED, doble cara, rojo/verde, batería de respaldo 90min — señalética NEC" },
+    { id: 84, name: "Emergency Light Twin Head",category: "Iluminación",           unit: "unidades", stock: 14, minStock: 4,  unitCost: 42.50,  sku: "LTH-ELR4-LED",        description: "Lithonia emergency light twin head LED, batería Ni-Cd 90min — iluminación de emergencia" },
+    { id: 85, name: "Fotocélula 105-277V",      category: "Iluminación",           unit: "unidades", stock: 30, minStock: 8,  unitCost: 12.95,  sku: "LEV-ODB-PDL",         description: "Leviton fotocélula twist-lock, 105-277V, 1800W — control automático alumbrado exterior" },
+    { id: 86, name: "LED High Bay UFO 200W",    category: "Iluminación",           unit: "unidades", stock: 8,  minStock: 2,  unitCost: 189.00, sku: "ETN-EHBX200",         description: "Eaton LED high bay UFO 200W, 5000K, 26000lm — bodegas, plantas y áreas industriales" },
+    { id: 87, name: "LED Wraparound 4ft 40W",   category: "Iluminación",           unit: "unidades", stock: 20, minStock: 6,  unitCost: 65.00,  sku: "MXL-LWR40-4",         description: "Maxlite LED wraparound 4ft, 40W, 4400lm, 4000K — oficinas, pasillos y comercial" },
+    { id: 88, name: "LED Panel 2x4 50W 5000K",  category: "Iluminación",           unit: "unidades", stock: 15, minStock: 4,  unitCost: 89.95,  sku: "KST-LED-2X4-50W",     description: "Keystone LED panel 2x4, 50W, 5000K, 6500lm, 0-10V dimmable — oficinas y salas de reuniones" },
+    { id: 89, name: "LED Floodlight 78W 5000K", category: "Iluminación",           unit: "unidades", stock: 12, minStock: 3,  unitCost: 98.50,  sku: "RAB-WPLED78",         description: "RAB LED floodlight 78W, 5000K, 8600lm, NEMA 4X — fachadas, seguridad y exteriores" },
+    { id: 90, name: "LED BR30 9W 2700K Dimm",   category: "Iluminación",           unit: "unidades", stock: 36, minStock: 10, unitCost: 8.95,   sku: "SAT-9BR30-27K",       description: "Satco LED BR30, 9W equiv. 65W, 2700K, 650lm, dimmable — lámparas de receso residencial" },
   ],
   projects: [
     { id: 1, name: "Residencia López",      type: "Residencial", status: "En progreso",    responsible: "Carlos Méndez", materials: [{ materialId: 1, qty: 2 }, { materialId: 7, qty: 1 }, { materialId: 8, qty: 3 }], budget: 320,  createdAt: "2026-04-15" },
@@ -78,7 +150,7 @@ const initialState = {
     { id: 4, type: "entrada", materialId: 9,  qty: 10, projectId: null, userId: 2, date: "2026-05-14", note: "Reposición stock industrial — proveedor CES" },
     { id: 5, type: "salida",  materialId: 27, qty: 2,  projectId: 2,    userId: 3, date: "2026-05-15", note: "Protección PoE cámaras — Torre Central" },
   ],
-  nextIds: { material: 31, project: 4, team: 6, movement: 6 },
+  nextIds: { material: 91, project: 4, team: 6, movement: 6 },
 };
 
 function reducer(state, action) {
