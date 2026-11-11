@@ -71,3 +71,10 @@ export function homeFor(roles: Role[]): string {
   if (roles.includes("owner") || roles.includes("manager")) return "/proyectos";
   return "/campo";
 }
+
+/** Compras: Clara y Karina (compras), Miguel y Andrés (dueños). Bodega y managers solo ven. */
+export const canSeePurchasing = (u: CurrentUser) => u.roles.some((r) => ["owner", "purchasing", "warehouse", "manager"].includes(r));
+export const canBuy = (u: CurrentUser) => u.roles.some((r) => ["owner", "purchasing"].includes(r));
+/** Aprueban compras grandes: los dueños (Miguel, Andrés) y Karina (compras con acceso de administrador). */
+export const canApprovePurchases = (u: CurrentUser) => u.roles.includes("owner") || (u.roles.includes("purchasing") && u.isAdmin);
+export const canReceive = (u: CurrentUser) => u.roles.some((r) => ["owner", "purchasing", "warehouse"].includes(r));

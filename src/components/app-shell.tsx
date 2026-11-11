@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui";
 import { logout } from "@/app/actions";
-import { canSeeCosts, isFieldOnly, type CurrentUser } from "@/lib/session";
+import { canSeeCosts, canSeePurchasing, isFieldOnly, type CurrentUser } from "@/lib/session";
 import { tr, type Tr } from "@/lib/i18n";
 
 type Item = { key: string; href: string; label: string };
@@ -15,6 +15,7 @@ function items(u: CurrentUser, t: Tr): Item[] {
   }
   list.push({ key: "projects", href: "/proyectos", label: t("Projects", "Proyectos") });
   if (canSeeCosts(u)) list.push({ key: "orders", href: "/pedidos", label: t("Orders by project", "Pedidos por proyecto") });
+  if (canSeePurchasing(u)) list.push({ key: "purchasing", href: "/compras", label: t("Purchasing", "Compras") });
   list.push({ key: "catalog", href: "/catalogo", label: t("Catalog", "Catálogo") });
   list.push({ key: "settings", href: "/ajustes", label: t("Settings", "Ajustes") });
   if (u.isAdmin) {

@@ -32,6 +32,13 @@ faltantes listos para compras y costo estimado vs real.
 - `/entrar`: correo y contraseña para los perfiles creados por un admin; el selector de demo sigue disponible hasta que haya datos reales.
 - Pantallas de error y de carga (`error.tsx`, `not-found.tsx`, `loading.tsx`, franja de “sin conexión”).
 
+**Compras**
+
+- `/compras` → Faltantes: lo que quedó corto en las entregas aparece solo; Clara agrega cotizaciones por proveedor, elige la mejor y crea las órdenes de compra (una por proveedor).
+- Si la orden pasa del monto límite (ajuste del admin, hoy $500) queda esperando a Miguel, Andrés o Karina para aprobar o rechazar; si no, sale directo.
+- Al marcar la orden como recibida, el material entra a la bodega y se recalcula el costo promedio.
+- Base de datos: `supabase/compras-update.sql` (dos columnas nuevas), después de `beta-update.sql`.
+
 ## Conectar la base de datos (Supabase)
 
 1. Crear un proyecto en Supabase (región East US) y guardar la contraseña de la base.

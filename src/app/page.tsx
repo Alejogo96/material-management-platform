@@ -10,7 +10,8 @@ export default async function Home() {
     { name: t("Phase 0 · Base", "Fase 0 · Base"), status: t("Done", "Listo"), items: [t("Next.js app with the Andy brand", "Proyecto Next.js con el brand de Andy"), t("Data model and sample data", "Modelo de datos y datos de ejemplo"), t("Slang-aware catalog search", "Búsqueda de catálogo con jerga")] },
     { name: t("Phase 1 · Demo MVP", "Fase 1 · MVP demostrable"), status: t("Done", "Listo"), items: [t("Orders from the phone ✓", "Pedidos desde el celular ✓"), t("Warehouse inbox ✓", "Bandeja de Jimmy ✓")] },
     { name: t("Beta", "Beta"), status: t("Now", "Ahora"), items: [t("Projects with phases, inspections and history ✓", "Proyectos con fases, revisiones e histórico ✓"), t("Orders by project ✓", "Pedidos por proyecto ✓"), t("Settings, people and admins ✓", "Ajustes, personas y administradores ✓"), t("EN / ES and error screens ✓", "EN / ES y pantallas de error ✓")] },
-    { name: t("Next", "Siguiente"), status: t("Later", "Después"), items: [t("Quotes and purchasing", "Cotizaciones y compras"), t("Leftovers and scrap", "Sobrantes y chatarrería"), t("Metrics and real login", "Métricas y login real")] },
+    { name: t("Purchasing", "Compras"), status: t("Now", "Ahora"), items: [t("Shortages and quotes ✓", "Faltantes y cotizaciones ✓"), t("Purchase orders with approval ✓", "Órdenes de compra con aprobación ✓"), t("Receiving into the warehouse ✓", "Recepción en bodega ✓")] },
+    { name: t("Next", "Siguiente"), status: t("Later", "Después"), items: [t("Real catalog from invoices", "Catálogo real desde facturas"), t("Leftovers and scrap", "Sobrantes y chatarrería"), t("Metrics and real login", "Métricas y login real")] },
   ];
   return (
     <div className="flex min-h-dvh flex-col">
