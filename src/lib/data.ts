@@ -7,24 +7,6 @@ export function requireDb() {
   return db;
 }
 
-export const kindLabel: Record<string, string> = {
-  estimate: "Estimación",
-  daily: "Diario",
-  urgent: "Urgente",
-  quick_pickup: "Retiro rápido",
-};
-
-export const statusLabel: Record<string, { label: string; tone: Tone }> = {
-  draft: { label: "Borrador", tone: "neutral" },
-  sent: { label: "Enviado", tone: "info" },
-  preparing: { label: "En preparación", tone: "warning" },
-  ready: { label: "Listo para recoger", tone: "success" },
-  delivered: { label: "Entregado", tone: "success" },
-  partial: { label: "Entrega parcial", tone: "warning" },
-  closed: { label: "Cerrado", tone: "neutral" },
-  cancelled: { label: "Cancelado", tone: "neutral" },
-};
-
 export type Tone = "neutral" | "info" | "success" | "warning" | "danger" | "brand";
 
 export async function getWarehouseId(companyId: string) {
@@ -83,10 +65,11 @@ export async function getActiveProjects(companyId: string) {
     .orderBy(asc(s.projects.name));
 }
 
-export async function listRequests(companyId: string, opts: { requestedById?: string } = {}) {
+export async function listRequests(companyId: string, opts: { requestedById?: string; projectId?: string } = {}) {
   const d = requireDb();
   const where = [eq(s.materialRequests.companyId, companyId)];
   if (opts.requestedById) where.push(eq(s.materialRequests.requestedById, opts.requestedById));
+  if (opts.projectId) where.push(eq(s.materialRequests.projectId, opts.projectId));
   const rows = await d
     .select({
       id: s.materialRequests.id,
@@ -95,6 +78,7 @@ export async function listRequests(companyId: string, opts: { requestedById?: st
       status: s.materialRequests.status,
       neededAt: s.materialRequests.neededAt,
       createdAt: s.materialRequests.createdAt,
+      projectId: s.projects.id,
       projectName: s.projects.name,
       requester: s.users.fullName,
       lines: sql<number>`(select count(*)::int from request_lines rl where rl.request_id = ${s.materialRequests.id})`,
@@ -168,10 +152,3 @@ export async function getRequest(companyId: string, id: string) {
 }
 
 export type LineState = "unmatched" | "available" | "partial" | "missing" | "delivered";
-export const lineStateLabel: Record<LineState, { label: string; tone: Tone }> = {
-  unmatched: { label: "Por conciliar", tone: "neutral" },
-  available: { label: "Disponible", tone: "success" },
-  partial: { label: "Parcial", tone: "warning" },
-  missing: { label: "Falta", tone: "danger" },
-  delivered: { label: "Entregado", tone: "success" },
-};

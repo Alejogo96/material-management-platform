@@ -29,42 +29,14 @@ export const btn = {
   smallAccent: `${btnBase} h-10 px-4 text-sm bg-andy-red text-white hover:bg-andy-red-dark`,
 };
 
-export function Logo({ dark = false }: { dark?: boolean }) {
+export function Logo({ dark = false, tagline = "Material management" }: { dark?: boolean; tagline?: string }) {
   return (
     <div className="flex items-center gap-2.5">
       <Image src="/andy-mark.svg" alt="" width={16} height={28} />
       <div className="leading-tight">
         <p className={`font-heading text-sm font-bold ${dark ? "text-white" : ""}`}>Andy Electric</p>
-        <p className={`text-[11px] ${dark ? "text-white/75" : "text-ink-muted"}`}>Gestión de material</p>
+        <p className={`text-[11px] ${dark ? "text-white/75" : "text-ink-muted"}`}>{tagline}</p>
       </div>
     </div>
   );
-}
-
-export function NoDatabase() {
-  return (
-    <main className="mx-auto flex max-w-lg flex-col gap-4 px-4 py-16">
-      <Logo />
-      <h1 className="text-2xl font-bold">Falta conectar la base de datos</h1>
-      <p className="text-ink-muted">
-        Esta parte de la demo necesita Supabase. Agrega la variable <code>DATABASE_URL</code> en Vercel (o en{" "}
-        <code>.env.local</code>) y vuelve a desplegar.
-      </p>
-      <Link href="/catalogo" className={btn.secondary}>
-        Mientras tanto, probar el catálogo con jerga
-      </Link>
-    </main>
-  );
-}
-
-export function formatDateTime(d: Date | null) {
-  if (!d) return "—";
-  return new Intl.DateTimeFormat("es", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    hour: "numeric",
-    minute: "2-digit",
-    timeZone: "America/New_York",
-  }).format(d);
 }

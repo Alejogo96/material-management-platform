@@ -13,6 +13,7 @@ config();
 
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import { eq } from "drizzle-orm";
 import * as s from "./schema";
 import catalog from "./data/catalog.json";
 import { aliasesBySku } from "./data/aliases";
@@ -44,7 +45,7 @@ async function main() {
     ] as const;
     const users: Record<string, string> = {};
     for (const p of people) {
-      const [u] = await tx.insert(s.users).values({ companyId, fullName: p.fullName }).returning();
+      const [u] = await tx.insert(s.users).values({ companyId, fullName: p.fullName, isAdmin: ["Miguel Salomón", "Andrés Lira", "Jimmy", "Karina"].includes(p.fullName) }).returning();
       users[p.fullName] = u.id;
       await tx.insert(s.userRoles).values(p.roles.map((role) => ({ userId: u.id, role })));
     }
@@ -58,6 +59,10 @@ async function main() {
       .insert(s.locations)
       .values([1, 2, 3, 4, 5].map((n) => ({ companyId, kind: "van" as const, name: `Van ${n}`, responsibleUserId: users[`Líder Van ${n}`] })))
       .returning();
+
+    // Cada líder pertenece al equipo de su van
+    for (const [i, van] of vans.entries()) await tx.update(s.users).set({ teamId: van.id }).where(eq(s.users.id, users[`Líder Van ${i + 1}`]));
+    await tx.insert(s.companySettings).values({ companyId });
 
     const [supplier] = await tx.insert(s.suppliers).values({ companyId, name: "City Electric Supply" }).returning();
 
@@ -94,16 +99,36 @@ async function main() {
     // Proyectos de ejemplo
     const [oak] = await tx.insert(s.projects).values({
       companyId, code: "P-001", name: "Remodelación Oak St", kind: "project", status: "active",
-      clientName: "Cliente Oak St", address: "1420 Oak St", managerId: users["Alex"], materialBudget: "6500", laborBudget: "9000",
+      clientName: "Cliente Oak St", address: "1420 Oak St", managerId: users["Alex"], type: "both", vanId: vans[1].id, createdById: users["Alex"], materialBudget: "6500", laborBudget: "9000",
     }).returning();
     const [maple] = await tx.insert(s.projects).values({
       companyId, code: "P-002", name: "Casa Maple Dr", kind: "project", status: "estimating",
-      clientName: "Cliente Maple Dr", address: "88 Maple Dr", managerId: users["El Niño"], materialBudget: "18400", laborBudget: "22000",
+      clientName: "Cliente Maple Dr", address: "88 Maple Dr", managerId: users["El Niño"], type: "rough_in", vanId: vans[0].id, createdById: users["El Niño"], materialBudget: "18400", laborBudget: "22000",
     }).returning();
-    await tx.insert(s.projects).values({
+    const [sc] = await tx.insert(s.projects).values({
       companyId, code: "SC-001", name: "Service call · 88 Elm Ave", kind: "service_call", status: "active",
-      address: "88 Elm Ave", managerId: users["Alex"],
-    });
+      address: "88 Elm Ave", managerId: users["Alex"], type: "service_call", vanId: vans[2].id, createdById: users["Alex"],
+    }).returning();
+
+    // Fases, revisiones e histórico de ejemplo
+    const [oakRough] = await tx.insert(s.projectPhases).values([
+      { projectId: oak.id, position: 0, name: "Rough-in", spec: "Panel 200A, circuitos 20A cocina y baños", status: "done" as const },
+      { projectId: oak.id, position: 1, name: "Trim", spec: "Dimmers en sala, GFCI en baños", status: "in_progress" as const },
+    ]).returning();
+    await tx.insert(s.projectPhases).values({ projectId: maple.id, position: 0, name: "Rough-in", spec: "Casa nueva, 2 niveles, panel 200A" });
+    await tx.insert(s.projectInspections).values([
+      { projectId: oak.id, phaseId: oakRough.id, name: "Rough-in", status: "passed" as const },
+      { projectId: oak.id, name: "Final" },
+      { projectId: maple.id, name: "Rough-in" },
+      { projectId: maple.id, name: "Utility" },
+    ]);
+    await tx.insert(s.projectEvents).values([
+      { projectId: oak.id, userId: users["Alex"], kind: "created", detail: "" },
+      { projectId: oak.id, userId: users["Alex"], kind: "phase", detail: "Rough-in|done" },
+      { projectId: maple.id, userId: users["El Niño"], kind: "created", detail: "" },
+      { projectId: sc.id, userId: users["Alex"], kind: "created", detail: "" },
+      { projectId: oak.id, userId: users["Líder Van 2"], kind: "request", detail: "1042|4" },
+    ]);
 
     await tx.insert(s.projectEstimates).values([
       { projectId: maple.id, materialId: bySku["ALD-EMT-34-10"], qty: "30", unitCost: "6.25" },
