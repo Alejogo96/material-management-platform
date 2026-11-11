@@ -1,0 +1,65 @@
+# Andy Electric · Plataforma de gestión de material
+
+App web (funciona en celular y en PC) para que cada material quede ligado a su proyecto:
+pedidos desde el celular, una sola bandeja para la bodega, inventario de bodega y vans,
+faltantes listos para compras y costo estimado vs real.
+
+- **Propuesta y roadmap:** documento "Andy Electric – Propuesta de plataforma de gestión de material"
+- **Diseño (Figma):** https://www.figma.com/design/KeWrsxHSDgmUqTKcru6hEo
+
+## Estado
+
+**Fase 0 · Base** (este repo hoy)
+
+- Proyecto Next.js + Tailwind con los colores y tipografías del brand de Andy (Inter para títulos, Montserrat para textos).
+- Modelo de datos completo en `src/db/schema.ts` y migraciones en `drizzle/`.
+- Datos de ejemplo: equipo, bodega y 5 vans, catálogo de 90 materiales con alias de jerga, proyectos y un pedido.
+- Página `/catalogo` para probar la búsqueda con jerga ("pipe 3/4", "la amarilla", "breaker de 20").
+
+## Cómo está armado
+
+| Pieza | Herramienta | Para qué |
+| --- | --- | --- |
+| App | Next.js (React) | Una sola app para celular y PC |
+| Estilos | Tailwind CSS | Tokens del design system en `src/app/globals.css` |
+| Base de datos | PostgreSQL en Supabase | Inventario, pedidos, proyectos, compras |
+| Acceso a datos | Drizzle ORM | Esquema tipado y migraciones versionadas |
+| Hosting | Vercel | Publicación automática desde GitHub |
+
+### Ideas clave del modelo de datos
+
+- **Todo pasa por un "pedido de material"** ligado a un proyecto, con un tipo: estimación, diario, urgente (service call) o retiro rápido.
+- **El inventario nunca se edita a mano.** Cada entrada, salida, devolución o ajuste es un movimiento; el stock se calcula con la vista `stock_by_location`.
+- **Catálogo con jerga:** cada material tiene alias en español, inglés o spanglish. Cuando Jimmy concilia un texto libre, ese texto se guarda como alias nuevo.
+- **Multi-empresa:** todas las tablas llevan `company_id`.
+
+## Correrlo en tu computador
+
+Requisitos: [Node.js 22](https://nodejs.org) y una base de datos Postgres (recomendado: un proyecto gratis en [Supabase](https://supabase.com)).
+
+```bash
+npm install
+cp .env.example .env.local   # llena DATABASE_URL con la conexión de Supabase
+npm run db:migrate           # crea las tablas
+npm run db:seed              # carga los datos de ejemplo
+npm run dev                  # abre http://localhost:3000
+```
+
+La página de inicio y `/catalogo` funcionan sin base de datos.
+
+## Scripts
+
+| Comando | Qué hace |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Compila para producción |
+| `npm run typecheck` | Revisa los tipos de TypeScript |
+| `npm run db:generate` | Genera una migración después de cambiar `schema.ts` |
+| `npm run db:migrate` | Aplica las migraciones a la base de datos |
+| `npm run db:seed` | Carga datos de ejemplo |
+| `npm run db:studio` | Abre un visor de la base de datos |
+
+## Nota sobre los datos
+
+El catálogo de ejemplo viene del prototipo anterior de este repo. Se reemplaza por
+materiales, suppliers y precios reales a partir de facturas de Andy Electric.
