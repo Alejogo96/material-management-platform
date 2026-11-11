@@ -1,0 +1,902 @@
+[
+  {
+    "sku": "DTK-120/240CM+",
+    "name": "DTK-120/240CM+",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 62.95,
+    "description": "Split Phase Surge Protective Device, 120/240 VAC — HVAC, bombas, motores, paneles",
+    "stock": 0,
+    "minStock": 5
+  },
+  {
+    "sku": "DTK-120/240BK1",
+    "name": "DTK-120/240BK1",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 83.95,
+    "description": "Residential Load Center Surge Protective Device, 120/240 VAC",
+    "stock": 0,
+    "minStock": 5
+  },
+  {
+    "sku": "DTK-120/240HD",
+    "name": "DTK-120/240HD",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 187.95,
+    "description": "Mode-Surge Protective Device 50kA/ohm, 25kA — alta capacidad de descarga",
+    "stock": 7,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-120/240XD",
+    "name": "DTK-120/240XD",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 118.95,
+    "description": "120/240 VAC Split Phase Surge Protective Device",
+    "stock": 0,
+    "minStock": 5
+  },
+  {
+    "sku": "DTK-120/240HD2",
+    "name": "DTK-120/240HD2",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 359,
+    "description": "100kA Surge Protective Device — residencial y comercial ligero",
+    "stock": 7,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-120/240CMX",
+    "name": "DTK-120/240CMX",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 83.95,
+    "description": "Split Phase Surge Protective Device, 120/240 VAC — uso exterior, NEMA 4X",
+    "stock": 4,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-120HW",
+    "name": "DTK-120HW",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 60.99,
+    "description": "Parallel Connected Surge Protective Device, 120 VAC — paneles y circuitos derivados",
+    "stock": 56,
+    "minStock": 10
+  },
+  {
+    "sku": "DTK-8FF",
+    "name": "DTK-8FF",
+    "category": "Protección Residencial/Comercial",
+    "unit": "u",
+    "unitCost": 27.99,
+    "description": "8 Outlet 110-120 VAC Surge Protective Device — protección punto de uso",
+    "stock": 0,
+    "minStock": 5
+  },
+  {
+    "sku": "D50-120/2083Y",
+    "name": "D50-120/2083Y",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 187.95,
+    "description": "Panel Surge Protector 3-Phase 20kA, 120/208 VAC, NEMA 4X — trifásico 4 hilos",
+    "stock": 30,
+    "minStock": 8
+  },
+  {
+    "sku": "D100-120/2083Y",
+    "name": "D100-120/2083Y",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 450,
+    "description": "Industrial Surge Protective Device, 100kA/Phase, 120/208 VAC Wye",
+    "stock": 21,
+    "minStock": 5
+  },
+  {
+    "sku": "D50-120/2401",
+    "name": "D50-120/2401",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 188.95,
+    "description": "Industrial Surge Protective Device 50kA/Phase — 120/240VAC Split Phase",
+    "stock": 13,
+    "minStock": 4
+  },
+  {
+    "sku": "D50-277/4803Y",
+    "name": "D50-277/4803Y",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 193.95,
+    "description": "Industrial SPD 50kA/Phase, 277/480 VAC, 4-Wire, Surface Mount",
+    "stock": 10,
+    "minStock": 3
+  },
+  {
+    "sku": "D100-277/4803Y",
+    "name": "D100-277/4803Y",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 450,
+    "description": "Industrial Surge Protective Device, 100kA/Phase, 277/480 VAC Wye",
+    "stock": 15,
+    "minStock": 4
+  },
+  {
+    "sku": "D100-120/2401",
+    "name": "D100-120/2401",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 450,
+    "description": "Industrial Surge Protective Device, 100kA/Phase, 120/240 VAC Split Phase",
+    "stock": 9,
+    "minStock": 3
+  },
+  {
+    "sku": "D50-120/240HL",
+    "name": "D50-120/240HL",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 188.95,
+    "description": "Industrial SPD 50kA/Phase, 120/240 VAC Delta High Leg, 4-Wire, Surface Mount",
+    "stock": 14,
+    "minStock": 4
+  },
+  {
+    "sku": "D200-120/2083Y",
+    "name": "D200-120/2083Y",
+    "category": "Protección Industrial",
+    "unit": "u",
+    "unitCost": 1020,
+    "description": "Industrial Surge Protective Device, 200kA/Phase, 120/208VAC Wye",
+    "stock": 8,
+    "minStock": 2
+  },
+  {
+    "sku": "D200M-120/2083Y",
+    "name": "D200M-120/2083Y",
+    "category": "Protección Industrial Modular",
+    "unit": "u",
+    "unitCost": 1696,
+    "description": "200kA Modular Surge Protective Device, 3-Phase, 4-Wire, 120/208 VAC",
+    "stock": 15,
+    "minStock": 3
+  },
+  {
+    "sku": "D200M-277/4803Y",
+    "name": "D200M-277/4803Y",
+    "category": "Protección Industrial Modular",
+    "unit": "u",
+    "unitCost": 1646,
+    "description": "200kA Modular Surge Protective Device, 3-Phase, 4-Wire, 277/480 VAC",
+    "stock": 11,
+    "minStock": 3
+  },
+  {
+    "sku": "D300M-120/2083Y",
+    "name": "D300M-120/2083Y",
+    "category": "Protección Industrial Modular",
+    "unit": "u",
+    "unitCost": 2086,
+    "description": "300kA Modular Surge Protective Device, 3-Phase, 4-Wire, 120/208 VAC",
+    "stock": 10,
+    "minStock": 2
+  },
+  {
+    "sku": "D300M-277/4803Y",
+    "name": "D300M-277/4803Y",
+    "category": "Protección Industrial Modular",
+    "unit": "u",
+    "unitCost": 2051,
+    "description": "300kA Modular Surge Protective Device, 3-Phase, 4-Wire, 277/480 VAC",
+    "stock": 10,
+    "minStock": 2
+  },
+  {
+    "sku": "DTK-2MHLP24B",
+    "name": "DTK-2MHLP24B",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 67.95,
+    "description": "Data and Signaling Circuit Surge Protection Module, 5A, 24 VAC — alarmas, control",
+    "stock": 0,
+    "minStock": 5
+  },
+  {
+    "sku": "DTK-2MHLP24BWB",
+    "name": "DTK-2MHLP24BWB",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 83.95,
+    "description": "Data and Signaling Circuit SPD with Snap-Track Base, 24 VAC/VDC, Short to Ground",
+    "stock": 5,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-2MHLP5BWB",
+    "name": "DTK-2MHLP5BWB",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 84.95,
+    "description": "Voice, Data and Signaling Circuit Modular SPD, 5 VAC/VDC Service Voltage",
+    "stock": 8,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-2MHLP75BWB",
+    "name": "DTK-2MHLP75BWB",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 77.95,
+    "description": "Data and Signaling Circuit SPD with Snap-Track Base, 75 VAC/VDC, Short to Ground",
+    "stock": 6,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-2LVLPLV",
+    "name": "DTK-2LVLPLV",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 52.95,
+    "description": "Data and Signaling Circuit Surge Protector, 24 VAC Service Voltage, 2 Pair",
+    "stock": 11,
+    "minStock": 4
+  },
+  {
+    "sku": "DTK-2LVLPSCPRUV",
+    "name": "DTK-2LVLPSCPRUV",
+    "category": "Protección Datos y Señal",
+    "unit": "u",
+    "unitCost": 50.99,
+    "description": "Low Voltage Surge Protector, 2 Pair, 22-16 AWG, 15A Sneak Current Protection",
+    "stock": 3,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-MRJPOE",
+    "name": "DTK-MRJPOE",
+    "category": "Protección Video/PoE",
+    "unit": "u",
+    "unitCost": 62.95,
+    "description": "Power Over Ethernet Surge Protector — protege cámaras IP y dispositivos PoE",
+    "stock": 8,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-DL480",
+    "name": "DTK-DL480",
+    "category": "Protección Iluminación",
+    "unit": "u",
+    "unitCost": 69.99,
+    "description": "Single-Phase Light Pole Surge Arrestor, 50000A, 480 VAC — postes de alumbrado",
+    "stock": 0,
+    "minStock": 3
+  },
+  {
+    "sku": "DTK-FMKHD",
+    "name": "DTK-FMKHD",
+    "category": "Accesorios",
+    "unit": "u",
+    "unitCost": 33.29,
+    "description": "Flush Mount Kit para DTK-120/240HD — kit de montaje empotrado",
+    "stock": 11,
+    "minStock": 4
+  },
+  {
+    "sku": "KIT-120SRD",
+    "name": "KIT-120SRD",
+    "category": "Accesorios",
+    "unit": "u",
+    "unitCost": 10.99,
+    "description": "Cover Kit para DTK-120SRD — cubierta de reemplazo",
+    "stock": 0,
+    "minStock": 3
+  },
+  {
+    "sku": "SW-THHN-12BK-500",
+    "name": "THHN 12 AWG Negro",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 118.5,
+    "description": "Southwire THHN/THWN-2, 12 AWG, 500ft, negro — construcción y uso general, 90°C seco/75°C húmedo",
+    "stock": 25,
+    "minStock": 5
+  },
+  {
+    "sku": "SW-THHN-12WH-500",
+    "name": "THHN 12 AWG Blanco",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 118.5,
+    "description": "Southwire THHN/THWN-2, 12 AWG, 500ft, blanco — cableado de circuitos de 20A",
+    "stock": 22,
+    "minStock": 5
+  },
+  {
+    "sku": "SW-THHN-12GR-500",
+    "name": "THHN 12 AWG Verde",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 118.5,
+    "description": "Southwire THHN/THWN-2, 12 AWG, 500ft, verde — conductor de tierra en circuitos de 20A",
+    "stock": 18,
+    "minStock": 4
+  },
+  {
+    "sku": "SW-THHN-10BK-500",
+    "name": "THHN 10 AWG Negro",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 191.25,
+    "description": "Southwire THHN/THWN-2, 10 AWG, 500ft, negro — circuitos de 30A, secadoras y A/C",
+    "stock": 15,
+    "minStock": 4
+  },
+  {
+    "sku": "SW-THHN-8BK-500",
+    "name": "THHN 8 AWG Negro",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 317,
+    "description": "Southwire THHN/THWN-2, 8 AWG, 500ft, negro — circuitos de 40-50A, tomas de alto voltaje",
+    "stock": 10,
+    "minStock": 3
+  },
+  {
+    "sku": "SW-THHN-6BK-250",
+    "name": "THHN 6 AWG Negro",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 259.5,
+    "description": "Southwire THHN/THWN-2, 6 AWG, 250ft, negro — alimentadores de tableros y circuitos de 60A",
+    "stock": 8,
+    "minStock": 3
+  },
+  {
+    "sku": "SW-NMB-142-250",
+    "name": "Romex 14/2 NM-B",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 83.25,
+    "description": "Southwire Romex, 14/2 con tierra, NM-B, 250ft — cableado residencial, circuitos de 15A",
+    "stock": 30,
+    "minStock": 8
+  },
+  {
+    "sku": "SW-NMB-122-250",
+    "name": "Romex 12/2 NM-B",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 119.75,
+    "description": "Southwire Romex, 12/2 con tierra, NM-B, 250ft — circuitos de 20A, tomas de cocina y baño",
+    "stock": 28,
+    "minStock": 8
+  },
+  {
+    "sku": "SW-NMB-123-250",
+    "name": "Romex 12/3 NM-B",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 162.5,
+    "description": "Southwire Romex, 12/3 con tierra, NM-B, 250ft — circuitos de 3 hilos, switchers de 3 vías",
+    "stock": 16,
+    "minStock": 5
+  },
+  {
+    "sku": "SW-NMB-102-250",
+    "name": "Romex 10/2 NM-B",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 184,
+    "description": "Southwire Romex, 10/2 con tierra, NM-B, 250ft — circuitos de 30A, cocinas eléctricas",
+    "stock": 12,
+    "minStock": 4
+  },
+  {
+    "sku": "SW-MC-122-250",
+    "name": "MC Cable 12/2",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 275,
+    "description": "Southwire MC Cable, 12/2 con tierra, armor metálico, 250ft — aplicaciones comerciales e industriales",
+    "stock": 10,
+    "minStock": 3
+  },
+  {
+    "sku": "SW-SER-224-100",
+    "name": "SER Aluminio 2-2-4",
+    "category": "Cables y Conductores",
+    "unit": "rollo (100ft)",
+    "unitCost": 489,
+    "description": "Southwire SER Aluminio 2-2-4 AWG, 100ft — acometidas de servicios residenciales 200A",
+    "stock": 6,
+    "minStock": 2
+  },
+  {
+    "sku": "SW-XHHW2-4BK-500",
+    "name": "XHHW-2 4 AWG Negro",
+    "category": "Cables y Conductores",
+    "unit": "rollo (500ft)",
+    "unitCost": 534,
+    "description": "Encore Wire XHHW-2, 4 AWG, 500ft, negro — aplicaciones industriales húmedas y secas, 90°C",
+    "stock": 7,
+    "minStock": 2
+  },
+  {
+    "sku": "EW-UFB-122-250",
+    "name": "UFB-W 12/2 Underground",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 147.5,
+    "description": "Encore Wire UFB-W, 12/2, 250ft — cable directo enterrado, circuitos exteriores y jardines",
+    "stock": 9,
+    "minStock": 3
+  },
+  {
+    "sku": "BD-TSTAT-185-250",
+    "name": "Cable Termostato 18/5",
+    "category": "Cables y Conductores",
+    "unit": "rollo (250ft)",
+    "unitCost": 62.95,
+    "description": "Belden 18 AWG, 5 conductores, 250ft — control de termostatos HVAC, color codificado",
+    "stock": 14,
+    "minStock": 4
+  },
+  {
+    "sku": "SQD-QO115",
+    "name": "Square D QO115 15A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 8.95,
+    "description": "Square D QO 15A 1-Polo 120V — interruptor de circuito residencial/comercial, plug-in",
+    "stock": 50,
+    "minStock": 15
+  },
+  {
+    "sku": "SQD-QO120",
+    "name": "Square D QO120 20A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 9.5,
+    "description": "Square D QO 20A 1-Polo 120V — circuitos de cocina, baño y uso general",
+    "stock": 48,
+    "minStock": 15
+  },
+  {
+    "sku": "SQD-QO230",
+    "name": "Square D QO230 30A 2P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 14.95,
+    "description": "Square D QO 30A 2-Polos 240V — secadoras, calentadores de agua, A/C pequeños",
+    "stock": 30,
+    "minStock": 10
+  },
+  {
+    "sku": "SQD-QO240",
+    "name": "Square D QO240 40A 2P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 17.5,
+    "description": "Square D QO 40A 2-Polos 240V — cocinas eléctricas, hornos empotrados",
+    "stock": 20,
+    "minStock": 8
+  },
+  {
+    "sku": "SQD-QO260",
+    "name": "Square D QO260 60A 2P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 22.5,
+    "description": "Square D QO 60A 2-Polos 240V — alimentadores de subtableros, A/C central",
+    "stock": 18,
+    "minStock": 6
+  },
+  {
+    "sku": "SQD-HOM612L100PG",
+    "name": "Square D HOM6-12L100PG",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 149.95,
+    "description": "Square D HomeLine 100A, 6/12 circuitos, caja de carga 120/240V — residencial",
+    "stock": 8,
+    "minStock": 3
+  },
+  {
+    "sku": "SQD-QO130L200PG",
+    "name": "Square D QO130L200PG",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 285,
+    "description": "Square D QO 200A, 30 circuitos, panel de carga 120/240V con interruptor principal",
+    "stock": 5,
+    "minStock": 2
+  },
+  {
+    "sku": "ETN-CH115",
+    "name": "Eaton CH115 15A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 8.25,
+    "description": "Eaton CH 15A 1-Polo 120V — interruptor de circuito plug-in para tableros Eaton/CH",
+    "stock": 40,
+    "minStock": 12
+  },
+  {
+    "sku": "ETN-CH120",
+    "name": "Eaton CH120 20A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 8.95,
+    "description": "Eaton CH 20A 1-Polo 120V — circuitos de 20A para uso residencial y comercial",
+    "stock": 38,
+    "minStock": 12
+  },
+  {
+    "sku": "ETN-CH230",
+    "name": "Eaton CH230 30A 2P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 14.25,
+    "description": "Eaton CH 30A 2-Polos 240V — cargas eléctricas de alta demanda",
+    "stock": 22,
+    "minStock": 8
+  },
+  {
+    "sku": "SIE-Q115",
+    "name": "Siemens Q115 15A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 7.95,
+    "description": "Siemens QP 15A 1-Polo 120V — plug-in para tableros Siemens/Murray/Gould",
+    "stock": 35,
+    "minStock": 10
+  },
+  {
+    "sku": "SIE-Q120",
+    "name": "Siemens Q120 20A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 8.5,
+    "description": "Siemens QP 20A 1-Polo 120V — circuitos de uso general y cocina",
+    "stock": 32,
+    "minStock": 10
+  },
+  {
+    "sku": "SIE-EQ8100ARM",
+    "name": "Siemens EQ8100ARM",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 378,
+    "description": "Siemens 100A Main Breaker Panel, 8/16 circuitos — tablero con interruptor principal y protección AFCI",
+    "stock": 4,
+    "minStock": 2
+  },
+  {
+    "sku": "GE-THQB1115",
+    "name": "GE THQB1115 15A 1P",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 7.5,
+    "description": "GE THQB 15A 1-Polo 120V — bolt-on para tableros GE, uso comercial",
+    "stock": 28,
+    "minStock": 8
+  },
+  {
+    "sku": "ABB-T2S100-3P",
+    "name": "ABB 3P 100A Tripolar",
+    "category": "Breakers y Tableros",
+    "unit": "u",
+    "unitCost": 185,
+    "description": "ABB Tmax T2S 100A 3-Polos 480V — interruptor industrial para tableros de media tensión",
+    "stock": 6,
+    "minStock": 2
+  },
+  {
+    "sku": "ALD-EMT-12-10",
+    "name": "Conduit EMT 1/2\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 4.45,
+    "description": "Allied EMT 1/2\", 10 pies, calibre 18 — tubería eléctrica metálica para instalaciones expuestas",
+    "stock": 120,
+    "minStock": 30
+  },
+  {
+    "sku": "ALD-EMT-34-10",
+    "name": "Conduit EMT 3/4\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 6.25,
+    "description": "Allied EMT 3/4\", 10 pies — para cableado de circuitos de mayor calibre en exteriores",
+    "stock": 95,
+    "minStock": 25
+  },
+  {
+    "sku": "ALD-EMT-1-10",
+    "name": "Conduit EMT 1\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 9.5,
+    "description": "Allied EMT 1\", 10 pies — alimentadores y acometidas en instalaciones comerciales",
+    "stock": 60,
+    "minStock": 15
+  },
+  {
+    "sku": "CAR-PVC-12-10",
+    "name": "Conduit PVC 1/2\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 2.95,
+    "description": "Carlon PVC Schedule 40, 1/2\", 10 pies — uso subterráneo e instalaciones húmedas",
+    "stock": 150,
+    "minStock": 40
+  },
+  {
+    "sku": "CAR-PVC-34-10",
+    "name": "Conduit PVC 3/4\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 3.75,
+    "description": "Carlon PVC Schedule 40, 3/4\", 10 pies — subterráneo y uso exterior en plomadas",
+    "stock": 120,
+    "minStock": 30
+  },
+  {
+    "sku": "CAR-PVC-1-10",
+    "name": "Conduit PVC 1\" - 10ft",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 5.5,
+    "description": "Carlon PVC Schedule 40, 1\", 10 pies — alimentadores subterráneos y canalizaciones",
+    "stock": 80,
+    "minStock": 20
+  },
+  {
+    "sku": "RAC-4SQ-112",
+    "name": "Caja metálica 4x4",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 3.25,
+    "description": "Raco caja de salida metálica 4\"x4\"x1-1/2\" — instalaciones de conduit EMT/Rigid",
+    "stock": 75,
+    "minStock": 20
+  },
+  {
+    "sku": "CAR-B114A",
+    "name": "Caja PVC 1 gang",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 1.25,
+    "description": "Carlon caja PVC 1 gang, 14.5 ci — para interruptores y tomacorrientes en conduit PVC",
+    "stock": 100,
+    "minStock": 25
+  },
+  {
+    "sku": "TnB-5133-12",
+    "name": "Conector EMT 1/2\" set-screw",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 0.65,
+    "description": "Thomas & Betts conector EMT 1/2\" set-screw — conexión a caja metálica, acero zincado",
+    "stock": 200,
+    "minStock": 50
+  },
+  {
+    "sku": "TnB-5133-34",
+    "name": "Conector EMT 3/4\" set-screw",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 0.85,
+    "description": "Thomas & Betts conector EMT 3/4\" set-screw — conexión de conduit a cajas y tableros",
+    "stock": 160,
+    "minStock": 40
+  },
+  {
+    "sku": "TnB-5140-12",
+    "name": "Coupling EMT 1/2\"",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 0.55,
+    "description": "Thomas & Betts coupling EMT 1/2\" set-screw — unión de tramos de conduit",
+    "stock": 180,
+    "minStock": 40
+  },
+  {
+    "sku": "HBL-5310-0",
+    "name": "Caja intemperie 1 gang",
+    "category": "Conectores y Conduit",
+    "unit": "u",
+    "unitCost": 6.5,
+    "description": "Hubbell caja exterior 1 gang, NEMA 3R, riser — para tomas y switches en exteriores",
+    "stock": 45,
+    "minStock": 10
+  },
+  {
+    "sku": "3M-Y1-100PK",
+    "name": "Wire Nuts amarillo (100pk)",
+    "category": "Conectores y Conduit",
+    "unit": "paq",
+    "unitCost": 8.95,
+    "description": "3M Scotchlok conectores de alambre amarillo, 100 unidades — empalmes 12-10 AWG",
+    "stock": 30,
+    "minStock": 8
+  },
+  {
+    "sku": "GBR-STPL-12-100",
+    "name": "Grapa cable 1/2\" (100pk)",
+    "category": "Conectores y Conduit",
+    "unit": "paq",
+    "unitCost": 4.25,
+    "description": "Grapas de cable romex/MC 1/2\", 100 unidades — fijación de cables NM-B a madera",
+    "stock": 25,
+    "minStock": 6
+  },
+  {
+    "sku": "PAN-PLT2S-100",
+    "name": "Cable tie nylon 8\" (100pk)",
+    "category": "Conectores y Conduit",
+    "unit": "paq",
+    "unitCost": 5.95,
+    "description": "Panduit cable tie nylon 8\", 50 lb, 100 unidades — organización de cables y mazos",
+    "stock": 40,
+    "minStock": 10
+  },
+  {
+    "sku": "PHI-A19-9W-16PK",
+    "name": "LED A19 9W 2700K (16pk)",
+    "category": "Iluminación",
+    "unit": "paq",
+    "unitCost": 22.95,
+    "description": "Philips LED A19, 9W equiv. 60W, 2700K cálida, 800lm, base E26 — uso general residencial",
+    "stock": 35,
+    "minStock": 10
+  },
+  {
+    "sku": "GE-PAR38-18W-3K",
+    "name": "LED PAR38 18W 3000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 12.95,
+    "description": "GE LED PAR38, 18W equiv. 100W, 3000K, 1350lm, dimmable — iluminación de acento y comercial",
+    "stock": 28,
+    "minStock": 8
+  },
+  {
+    "sku": "SYL-T8-18W-5K",
+    "name": "LED T8 4ft 18W 5000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 9.5,
+    "description": "Sylvania LED T8, 4ft, 18W, 5000K luz día, 2200lm — reemplazo directo fluorescente, Type A+B",
+    "stock": 50,
+    "minStock": 15
+  },
+  {
+    "sku": "LTH-2SQTL-40",
+    "name": "LED Shop Light 4ft 5000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 28.5,
+    "description": "Lithonia Lighting LED shoplight 4ft, 40W, 5000K, 4400lm — garajes, bodegas y talleres",
+    "stock": 22,
+    "minStock": 6
+  },
+  {
+    "sku": "HALO-RL560-3K",
+    "name": "LED Recessed 6\" 12W 3000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 15.95,
+    "description": "Halo LED recessed 6\", 12W, 3000K, 850lm, dimmable — downlight residencial y comercial",
+    "stock": 40,
+    "minStock": 12
+  },
+  {
+    "sku": "LTH-KAD-100L",
+    "name": "LED Area Light 100W 5000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 124.95,
+    "description": "Lithonia LED area light 100W, 5000K, 12000lm, NEMA 3R — estacionamientos y exteriores",
+    "stock": 10,
+    "minStock": 3
+  },
+  {
+    "sku": "CREE-OSQ-150L",
+    "name": "LED Street Light 150W",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 245,
+    "description": "Cree LED street light 150W, 5000K, 18750lm — postes de alumbrado público vías urbanas",
+    "stock": 6,
+    "minStock": 2
+  },
+  {
+    "sku": "LTH-EXR9-LED",
+    "name": "Exit Sign LED Doble cara",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 35.95,
+    "description": "Lithonia exit sign LED, doble cara, rojo/verde, batería de respaldo 90min — señalética NEC",
+    "stock": 18,
+    "minStock": 5
+  },
+  {
+    "sku": "LTH-ELR4-LED",
+    "name": "Emergency Light Twin Head",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 42.5,
+    "description": "Lithonia emergency light twin head LED, batería Ni-Cd 90min — iluminación de emergencia",
+    "stock": 14,
+    "minStock": 4
+  },
+  {
+    "sku": "LEV-ODB-PDL",
+    "name": "Fotocélula 105-277V",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 12.95,
+    "description": "Leviton fotocélula twist-lock, 105-277V, 1800W — control automático alumbrado exterior",
+    "stock": 30,
+    "minStock": 8
+  },
+  {
+    "sku": "ETN-EHBX200",
+    "name": "LED High Bay UFO 200W",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 189,
+    "description": "Eaton LED high bay UFO 200W, 5000K, 26000lm — bodegas, plantas y áreas industriales",
+    "stock": 8,
+    "minStock": 2
+  },
+  {
+    "sku": "MXL-LWR40-4",
+    "name": "LED Wraparound 4ft 40W",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 65,
+    "description": "Maxlite LED wraparound 4ft, 40W, 4400lm, 4000K — oficinas, pasillos y comercial",
+    "stock": 20,
+    "minStock": 6
+  },
+  {
+    "sku": "KST-LED-2X4-50W",
+    "name": "LED Panel 2x4 50W 5000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 89.95,
+    "description": "Keystone LED panel 2x4, 50W, 5000K, 6500lm, 0-10V dimmable — oficinas y salas de reuniones",
+    "stock": 15,
+    "minStock": 4
+  },
+  {
+    "sku": "RAB-WPLED78",
+    "name": "LED Floodlight 78W 5000K",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 98.5,
+    "description": "RAB LED floodlight 78W, 5000K, 8600lm, NEMA 4X — fachadas, seguridad y exteriores",
+    "stock": 12,
+    "minStock": 3
+  },
+  {
+    "sku": "SAT-9BR30-27K",
+    "name": "LED BR30 9W 2700K Dimm",
+    "category": "Iluminación",
+    "unit": "u",
+    "unitCost": 8.95,
+    "description": "Satco LED BR30, 9W equiv. 65W, 2700K, 650lm, dimmable — lámparas de receso residencial",
+    "stock": 36,
+    "minStock": 10
+  }
+]

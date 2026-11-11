@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/*
+ * Tokens del design system (Figma "Andy Electric – Plataforma de gestión de material").
+ * Basados en el brand guideline de Andy Electric.
+ */
+@theme {
+  /* Marca */
+  --color-andy-red: #d92e2f;
+  --color-andy-red-dark: #b42b36;
+  --color-andy-red-50: #fbeaea;
+  --color-andy-black: #21241e;
+  --color-andy-gray: #3b434f;
+  --color-andy-gold: #ce923a;
+  --color-andy-gold-dark: #8a5f1e;
+  --color-andy-gold-50: #f8efe0;
+  --color-andy-light: #f0f0f0;
+
+  /* Semánticos */
+  --color-page: #f9fafb;
+  --color-surface: #ffffff;
+  --color-subtle: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-ink: #21241e;
+  --color-ink-muted: #6b7280;
+  --color-success: #15803d;
+  --color-success-bg: #dcfce7;
+  --color-warning: #8a5f1e;
+  --color-warning-bg: #f8efe0;
+  --color-danger: #9f1f1f;
+  --color-danger-bg: #fde8e8;
+  --color-info: #2563eb;
+  --color-info-bg: #dbeafe;
+
+  /* Tipografía: Inter para títulos, Montserrat para textos */
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
