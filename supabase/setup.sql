@@ -285,7 +285,6 @@ ALTER TABLE public."supplier_refs" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public."user_roles" ENABLE ROW LEVEL SECURITY;
 
 -- ===== Datos de ejemplo =====
-\restrict QYleCY8ZjRLjUZeur9thxFM6AGxM30EB9L0342AXHiP1U4xYL7LYT2BtjX2dgba
 INSERT INTO public.companies (id, name, created_at) VALUES ('0e8f251d-dad9-4b75-81e2-2beb85c2936d', 'Andy Electric', '2026-11-11 17:40:54.536939+00');
 INSERT INTO public.users (id, company_id, full_name, phone, email, locale, active, created_at) VALUES ('c8d525ba-38dd-4790-afe0-5b71182f5e61', '0e8f251d-dad9-4b75-81e2-2beb85c2936d', 'Miguel Salomón', NULL, NULL, 'es', true, '2026-11-11 17:40:54.536939+00');
 INSERT INTO public.users (id, company_id, full_name, phone, email, locale, active, created_at) VALUES ('4b2a86be-e6db-43a2-808e-99c3b7eebc9f', '0e8f251d-dad9-4b75-81e2-2beb85c2936d', 'Andrés Lira', NULL, NULL, 'es', true, '2026-11-11 17:40:54.536939+00');
@@ -882,6 +881,5 @@ INSERT INTO public.user_roles (user_id, role) VALUES ('d15f7e6f-5d08-43cd-aa54-b
 INSERT INTO public.user_roles (user_id, role) VALUES ('1335ab31-d65e-4156-a3cb-1f72863cde38', 'van_leader');
 INSERT INTO public.user_roles (user_id, role) VALUES ('c5b5398e-27f5-4681-aa84-fe873cd65744', 'van_leader');
 INSERT INTO public.user_roles (user_id, role) VALUES ('3a638e80-087c-4148-8177-0cfdba2f7bec', 'van_leader');
-\unrestrict QYleCY8ZjRLjUZeur9thxFM6AGxM30EB9L0342AXHiP1U4xYL7LYT2BtjX2dgba
 
 COMMIT;
