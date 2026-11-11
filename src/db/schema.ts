@@ -40,6 +40,10 @@ export const projectStatusEnum = pgEnum("project_status", [
   "closed",
 ]);
 
+export const projectTypeEnum = pgEnum("project_type", ["rough_in", "trim", "both", "service_call", "other"]);
+export const phaseStatusEnum = pgEnum("phase_status", ["pending", "in_progress", "done"]);
+export const inspectionStatusEnum = pgEnum("inspection_status", ["pending", "passed", "failed"]);
+
 export const locationKindEnum = pgEnum("location_kind", ["warehouse", "van"]);
 
 export const requestKindEnum = pgEnum("request_kind", [
@@ -93,7 +97,13 @@ export const users = pgTable(
     fullName: text("full_name").notNull(),
     phone: text("phone"),
     email: text("email"),
-    locale: text("locale").notNull().default("es"),
+    locale: text("locale").notNull().default("en"),
+    /** Administradores: gestionan perfiles y límites (Andrés, Miguel, Jimmy, Karina). */
+    isAdmin: boolean("is_admin").notNull().default(false),
+    /** Equipo / van asignada. */
+    teamId: uuid("team_id"),
+    /** scrypt "salt:hash". Vacío = solo entra por el selector de demo. */
+    passwordHash: text("password_hash"),
     active: boolean("active").notNull().default(true),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -132,6 +142,10 @@ export const projects = pgTable(
     clientName: text("client_name"),
     address: text("address"),
     managerId: uuid("manager_id").references(() => users.id),
+    type: projectTypeEnum("type").notNull().default("rough_in"),
+    typeOther: text("type_other"),
+    vanId: uuid("van_id").references(() => locations.id),
+    createdById: uuid("created_by_id").references(() => users.id),
     /** Presupuesto de material y de mano de obra (USD). El MVP compara solo material. */
     materialBudget: numeric("material_budget", { precision: 12, scale: 2 }),
     laborBudget: numeric("labor_budget", { precision: 12, scale: 2 }),
@@ -326,4 +340,45 @@ export const purchaseOrders = pgTable("purchase_orders", {
   total: numeric("total", { precision: 12, scale: 2 }),
   invoicePath: text("invoice_path"), // factura del supplier (PDF o foto)
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// ── Fases, revisiones e histórico de proyectos ──────────────────────────
+export const projectPhases = pgTable("project_phases", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
+  position: integer("position").notNull().default(0),
+  name: text("name").notNull(),
+  spec: text("spec"),
+  status: phaseStatusEnum("status").notNull().default("pending"),
+});
+
+export const projectInspections = pgTable("project_inspections", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
+  phaseId: uuid("phase_id").references(() => projectPhases.id, { onDelete: "set null" }),
+  name: text("name").notNull(),
+  dueDate: date("due_date"),
+  status: inspectionStatusEnum("status").notNull().default("pending"),
+});
+
+/** Histórico del proyecto desde que nace: quién hizo qué y cuándo. */
+export const projectEvents = pgTable(
+  "project_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    projectId: uuid("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
+    userId: uuid("user_id").references(() => users.id),
+    kind: text("kind").notNull(), // created | status | lead | van | phase | inspection | request | delivery
+    detail: text("detail").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("project_events_project_idx").on(t.projectId, t.createdAt)],
+);
+
+/** Límites configurables por los administradores. */
+export const companySettings = pgTable("company_settings", {
+  companyId: uuid("company_id").primaryKey().references(() => companies.id),
+  approvalThreshold: numeric("approval_threshold", { precision: 12, scale: 2 }).notNull().default("500"),
+  excessPct: integer("excess_pct").notNull().default(10),
+  reminderHours: integer("reminder_hours").notNull().default(2),
 });

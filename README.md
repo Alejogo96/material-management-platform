@@ -23,6 +23,15 @@ faltantes listos para compras y costo estimado vs real.
 - `/bodega` (computador): bandeja de Jimmy, detalle del pedido, conciliar texto libre (se aprende como alias), marcar listo y entregar.
 - Al entregar se descuenta el stock de bodega con movimientos y lo que falte queda como solicitud de compra.
 
+**Beta** (este repo hoy, todo diseñado antes en Figma)
+
+- `/proyectos`: lista, crear proyecto (nombre/dirección, encargado, equipo/van, tipo roof·trim·ambos·service call·otro, fases con especificaciones y revisiones por pasar) y detalle con histórico desde que nace, quién lo creó y quién es el encargado. Crean proyectos Jimmy, Alex, El Niño, Andrés y Miguel.
+- `/pedidos`: tablero de pedidos organizado por proyecto, con el detalle de cada pedido.
+- Avisos al pedir: posible duplicado, exceso sobre el estimado (límite configurable), proyecto cerrado o en pausa, sin conexión (el borrador queda guardado en el teléfono).
+- `/ajustes`: idioma EN / ES por cuenta (inglés americano por defecto). `/admin/usuarios` y `/admin/limites`: solo los 4 administradores (Andrés, Miguel, Jimmy, Karina) crean y gestionan perfiles (nombre, correo, contraseña, equipo) y fijan monto de aprobación, % de exceso y horas de recordatorio.
+- `/entrar`: correo y contraseña para los perfiles creados por un admin; el selector de demo sigue disponible hasta que haya datos reales.
+- Pantallas de error y de carga (`error.tsx`, `not-found.tsx`, `loading.tsx`, franja de “sin conexión”).
+
 ## Conectar la base de datos (Supabase)
 
 1. Crear un proyecto en Supabase (región East US) y guardar la contraseña de la base.
@@ -30,7 +39,9 @@ faltantes listos para compras y costo estimado vs real.
 3. Connect → Transaction pooler: copiar la URI (puerto 6543) y poner la contraseña donde dice `[YOUR-PASSWORD]`.
 4. Vercel → Settings → Environment Variables: `DATABASE_URL` = esa URI. Luego Deployments → Redeploy.
 
-La contraseña nunca va en el código ni en el chat; solo en Vercel.
+5. Si la base ya estaba creada antes de la beta: SQL Editor → pegar `supabase/beta-update.sql` → Run (agrega proyectos con fases y revisiones, histórico, administradores y límites). En una base nueva se corre después de `setup.sql`.
+
+La contraseña nunca va en el código ni en el chat; solo en Vercel. Opcional: `SESSION_SECRET` (cualquier texto largo) para firmar la sesión; si falta se usa `DATABASE_URL`.
 
 `supabase/setup.sql` se regenera desde una base local recién sembrada (migraciones + `pg_dump --data-only`).
 
