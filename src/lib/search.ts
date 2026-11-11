@@ -30,7 +30,13 @@ export function score(item: Searchable, query: string): { score: number; matched
     if (c === q) s = 100;
     else if (c.startsWith(q)) s = 80;
     else if (c.includes(q)) s = 60;
-    else if (tokens.every((t) => c.split(/[\s-]/).some((w) => w.startsWith(t) || w === t))) s = 40;
+    else {
+      const words = c.split(/[\s-]/);
+      const hits = tokens.filter((t) => words.some((w) => w.startsWith(t))).length;
+      if (hits === tokens.length) s = 40;
+      // Coincidencia parcial ("breaker de 20 doble" ≈ "breaker de 20"): al menos la mitad de las palabras
+      else if (tokens.length >= 2 && hits / tokens.length >= 0.5) s = Math.round(30 * (hits / tokens.length));
+    }
     if (s > best.score) best = { score: s, matched: candidate };
   }
   return best;

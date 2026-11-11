@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const phases = [
-  { name: "Fase 0 · Base", status: "En curso", items: ["Proyecto Next.js con el brand de Andy", "Modelo de datos y datos de ejemplo", "Búsqueda de catálogo con jerga"] },
-  { name: "Fase 1 · MVP demostrable", status: "Siguiente", items: ["Pedidos desde el celular", "Bandeja de Jimmy", "Inventario de bodega y vans", "Estimado vs real por proyecto"] },
+  { name: "Fase 0 · Base", status: "Listo", items: ["Proyecto Next.js con el brand de Andy", "Modelo de datos y datos de ejemplo", "Búsqueda de catálogo con jerga"] },
+  { name: "Fase 1 · MVP demostrable", status: "En curso", items: ["Pedidos desde el celular ✓", "Bandeja de Jimmy ✓", "Inventario de bodega y vans", "Estimado vs real por proyecto"] },
   { name: "Fase 2 · Operación real", status: "Después", items: ["Cotizaciones y compras", "Sobrantes y chatarrería", "Métricas"] },
 ];
 
@@ -30,8 +30,15 @@ export default function Home() {
         </section>
 
         <Link
-          href="/catalogo"
+          href="/entrar"
           className="flex items-center justify-between rounded-lg bg-andy-red px-5 py-4 font-heading font-semibold text-white hover:bg-andy-red-dark"
+        >
+          Entrar a la demo
+          <span aria-hidden>→</span>
+        </Link>
+        <Link
+          href="/catalogo"
+          className="-mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 font-heading font-semibold hover:bg-subtle"
         >
           Probar la búsqueda de catálogo con jerga
           <span aria-hidden>→</span>

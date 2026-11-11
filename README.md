@@ -16,6 +16,24 @@ faltantes listos para compras y costo estimado vs real.
 - Datos de ejemplo: equipo, bodega y 5 vans, catálogo de 90 materiales con alias de jerga, proyectos y un pedido.
 - Página `/catalogo` para probar la búsqueda con jerga ("pipe 3/4", "la amarilla", "breaker de 20").
 
+**Fase 1 · Pedidos** (en curso)
+
+- `/entrar`: elegir quién eres (demo, sin contraseña todavía).
+- `/campo` (celular): el líder de van pide material por proyecto, con búsqueda en jerga o texto libre, y confirma cuando lo recibe.
+- `/bodega` (computador): bandeja de Jimmy, detalle del pedido, conciliar texto libre (se aprende como alias), marcar listo y entregar.
+- Al entregar se descuenta el stock de bodega con movimientos y lo que falte queda como solicitud de compra.
+
+## Conectar la base de datos (Supabase)
+
+1. Crear un proyecto en Supabase (región East US) y guardar la contraseña de la base.
+2. SQL Editor → New query → pegar todo `supabase/setup.sql` → Run. Crea tablas, vista de stock y datos de ejemplo.
+3. Connect → Transaction pooler: copiar la URI (puerto 6543) y poner la contraseña donde dice `[YOUR-PASSWORD]`.
+4. Vercel → Settings → Environment Variables: `DATABASE_URL` = esa URI. Luego Deployments → Redeploy.
+
+La contraseña nunca va en el código ni en el chat; solo en Vercel.
+
+`supabase/setup.sql` se regenera desde una base local recién sembrada (migraciones + `pg_dump --data-only`).
+
 ## Cómo está armado
 
 | Pieza | Herramienta | Para qué |
