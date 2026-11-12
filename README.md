@@ -39,7 +39,7 @@ faltantes listos para compras y costo estimado vs real.
 3. Connect → Transaction pooler: copiar la URI (puerto 6543) y poner la contraseña donde dice `[YOUR-PASSWORD]`.
 4. Vercel → Settings → Environment Variables: `DATABASE_URL` = esa URI. Luego Deployments → Redeploy.
 
-5. Si la base ya estaba creada antes de la beta: SQL Editor → pegar `supabase/beta-update.sql` → Run (agrega proyectos con fases y revisiones, histórico, administradores y límites). En una base nueva se corre después de `setup.sql`.
+5. Las actualizaciones (`supabase/*-update.sql`) se aplican solas en cada despliegue de Vercel (`scripts/apply-updates.ts`, antes del build) y se anotan en la tabla `app_updates`; no hace falta pegarlas a mano. Para correrlas localmente: `npm run db:updates`.
 
 La contraseña nunca va en el código ni en el chat; solo en Vercel. Opcional: `SESSION_SECRET` (cualquier texto largo) para firmar la sesión; si falta se usa `DATABASE_URL`.
 
