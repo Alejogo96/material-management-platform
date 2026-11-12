@@ -316,6 +316,9 @@ export const purchaseRequests = pgTable("purchase_requests", {
   /** Proyectos que originaron el faltante, para repartir el costo real. */
   projectIds: uuid("project_ids").array().notNull().default([]),
   status: purchaseStatusEnum("status").notNull().default("open"),
+  /** Se llenan al convertirse en orden de compra. */
+  purchaseOrderId: uuid("purchase_order_id"),
+  unitPrice: numeric("unit_price", { precision: 12, scale: 4 }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
