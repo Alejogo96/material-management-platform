@@ -17,8 +17,8 @@ export function SignInForm({ locale }: { locale: Locale }) {
         startTransition(() => action(fd));
       }} className="flex flex-col gap-3 rounded-lg border border-border bg-surface p-4">
       <label className="flex flex-col gap-1.5">
-        <span className="text-sm font-semibold">{t("Email", "Correo")}</span>
-        <input name="email" type="email" autoComplete="username" required className={field} />
+        <span className="text-sm font-semibold">{t("Email or user", "Correo o usuario")}</span>
+        <input name="email" type="text" inputMode="email" autoCapitalize="none" autoComplete="username" required className={field} />
       </label>
       <label className="flex flex-col gap-1.5">
         <span className="text-sm font-semibold">{t("Password", "Contraseña")}</span>

